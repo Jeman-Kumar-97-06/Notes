@@ -1,0 +1,596 @@
+* A Frontend Open Source Framework which is used to develop user interfaces specifically for applications with single page.
+* Different content is rendered on that single page dynamically.
+* Setup :--
+    * Install node.
+    * Then run $ npm install react
+    * Xtra in VSCode:--   Install 'Simple React Snippets' Extension.
+                          Go to settings & search for 'emmet'.
+                          Then search for 'Emmet:Include Languages'.
+                          Add item 'javascript' and set it to 'javascriptreact'.
+                          These Instructions help in creating react components with html easily.
+* Creating React App :--
+    * Run $ npx create-react-app blogx 
+    * App Structure :--
+            /node_modules
+            /public/
+                favicon.ico
+                index.html
+                manifest.json
+                logo192.png
+                logo512.png
+                robots.txt
+            /src/
+                App.css
+                App.js
+                AppTest.js
+                index.css
+                index.js
+                logo.svg
+                reportWebVitals.js
+                SetupTests.js
+            .gitignore
+            package.json
+
+* Starting a React app :--
+    * Run '$ npm run start' in react root folder.
+
+* src/index.js :--
+    * The Main 'App' component is imported and rendered here, in this file.
+    * index.js :--
+        >> import React from 'react';
+        >> import ReactDOM from 'react-dom';
+        >> import 'index.css';
+        >> import App from './App';
+        >> const root = ReactDOM.createRoot(document.getElementById('root'));
+        >> root.render(
+        >>      <React.StrictMode>
+        >>          <App/>
+        >>      </React.StrictMode>
+        >>             )
+
+* Components :--
+    * Building Blocks of React App.
+    * Components Contain :--
+        * Template code that renders stuff on screen
+        * It's Own Logic JS Code.
+
+    * Functional Components :--
+        * src/App.js :--
+            >> function App() {
+            >>      return (
+            >>          <div className='App'>
+            >>              <div className='content'>
+            >>                  <h1>App Component</h1>
+            >>              </div>
+            >>          </div>
+            >>              );
+            >>                  };
+            >> export default App;
+    
+    * Rendering Dynamic Content in Components :--
+        * src/App.js :--
+            >> function App() {
+            >>      const title  = 'Welcome';
+            >>      const likes  = 40;
+            >>      const person = {name:"John Doe",age:30};
+            >>      return (
+            >>          <div>
+            >>              <h1>{title}</h1>
+            >>              <p> Age : {person.age}</p>
+            >>              <p> {[1,2,3]} </p>
+            >>              <p> {Math.random() * 10}</p>
+            >>          </div>
+            >>              )
+            >>                  };
+            >>  export default App;
+
+    * Adding Styles :--
+        * External CSS :--
+            >> import 'App.css';
+        * Inline CSS :--
+            >> return (
+            >>      <p style={{color:'blue',borderRadius:'5px'}}> Hi World! </p>
+            >>          );
+        
+* Handling Click Events :--
+    * src/Home.js :--
+         >> const Home = () => {
+         >>         const handleClick = () => {
+         >>                 console.log("Hello World!");
+         >>                                    };
+         >>         const handleClick2 = (name,eve) => {
+         >>                 console.log(`Hello ${name}`);
+         >>                 console.log(eve.target);
+         >>                                             };
+         >>         return (
+         >>             <div>
+         >>                 <h2> Home Page </h2>
+         >>                 <button onClick = {handleClick} >
+         >>                     Click Me !
+         >>                 </button>
+         >>                 <button onClick = {e=> {handleClick2('Jeman',e)} >
+         >>                     CLick Me Too!
+         >>                 </button>
+         >>             </div>
+         >>                 );
+         >>                     };
+         >> export default Home;
+* Props :-- 
+    * Also called as React Component Properties.
+    * Props are passed into React Components.
+    * BlogList.js :--
+        >> const BlogList = (props) => {
+        >>                  const brand = props.brand;
+        >>                  return (
+        >>                      <div className = 'blog-list'>
+        >>                          <p>{brand}</p>
+        >>                      </div>
+        >>                          )
+        >>                              };
+        >> export default BlogList;
+    * Home.js :--
+        >> import BlogList from './BlogList';
+        >> const Home = () => {
+        >>      return (
+        >>          <div>
+        >>              <BlogList brand='Ford'/>
+        >>              <BlogList brand='TATA'/>
+        >>          </div>
+        >>              )
+        >>                     };
+        >> export default Home;
+
+* Functions as Props :--
+    * BlogList.js :--
+        >> const BlogList = ({blogs,handleD}) => {
+        >>      return (
+        >>          <div>
+        >>              { blogs.map(bg => {
+        >>                  <div key={bg.id}>
+        >>                      <h2>{bg.title}</h2>
+        >>                      <button onClick = {()=> handleD(bg.id)}>
+        >>                          Delete Blog
+        >>                      </button>
+        >>                  </div>
+        >>                                 }
+        >>              }
+        >>          </div>
+        >>              )
+        >>                                         };
+        >> export default BlogList;
+
+    * Home.js :--
+        >> import {useState} from 'react';
+        >> import BlogList from './BlogList';
+        >> const Home = () => {
+        >>      const [blogs,setBlogs] = useState([
+        >>                                  {title: 't1', id=1},
+        >>                                  {title: 't2', id=2}
+        >>                                         ]);
+        >>      const handleDel = (id) => {
+        >>                  const nB = blogs.filter(blog=>blog.id != id);
+        >>                  setBlogs(nB);
+        >>                               };
+        >>      return (
+        >>          <div>
+        >>              <BlogList blogs = {blogs} handleD = {handleDel} />
+        >>          </div>
+        >>              )
+        >>                    };  
+
+
+* 'useState' Hook :--
+    * Used to set/change state variables.
+    * randomComp.js/
+        >> import {useState} from 'react';
+        >> function Example() {
+        >>      const [count,setCount] = useState(0);
+        >>      return (
+        >>          <div>
+        >>              <p> You click {count} times</p>
+        >>              <button onClick = {()=>setCount(count+1)}>
+        >>                  Click to increase count
+        >>              </button>
+        >>          </div>
+        >>              );
+        >>                      };
+        >>  export default Example;
+
+* 'useEffect' Hook :--
+    * 'useEffect' takes a function and a dependency array as arguments.
+    * The function inside 'useEffect' runs every time the page loads or any variable in the dependency array changes it's state.
+    * If the dependency array is empty, the function inside 'useEffect' will only run once.
+    * Home.js :--
+        >> import {useState,useEffect} from 'react';
+        >> import BlogList from './BlogList';
+        >> const Home = () => {
+        >>      const [blogs,setBlogs] = useState([
+        >>                                  {title:'B1',id:1},
+        >>                                  {title:'B2',id:2},
+        >>                                  {title:'B3',id:3}
+        >>                                         ]);
+        >>      const handleD = (id) => {
+        >>              const b = blogs.filter(blog => blog.id != id);
+        >>              setBlog(b);
+        >>                               }
+        >>      useEffect(()=>{console.log('useEffect ran yo!');},[blogs]);
+        >>      return (
+        >>              <div>
+        >>                  <BlogList blogs={blogs}/>
+        >>              </div>
+        >>              );
+        >>                  };
+        >> export default Home;
+
+* Doing CRUD Operations with React on a Database using a backend server created with NPM JSON Server:-
+    * First execute $ npm install json-server
+    * Then Create a JSON File that acts as a DB.
+        * db.json :-
+            >> {
+            >>      "blogs" : [
+            >>                  {
+            >>                    "title"  : "Blog1",
+            >>                    "body"   : "Blog1 Body",
+            >>                    "author" : "Jeman",
+            >>                    "id"     : 1
+            >>                   },
+            >>                  {
+            >>                    "title"  : "Blog2",
+            >>                    "body"   : "Blog2 Body",
+            >>                    "author" : "Jeman2",
+            >>                    "id"     : 2
+            >>                   },
+            >>                  {
+            >>                    "title"  : "Blog3",
+            >>                    "body"   : "Blog3 Body",
+            >>                    "author" : "Jeman3",
+            >>                    "id"     : 3
+            >>                   }
+            >>                 ];
+            >> }
+    * Run the following command to create a server based on this json file:-
+        $ npx json-server --watch data/db.json --port 8000
+    * The above server can be screwed with at 'http://localhost:8000'.
+* Fetching Data from the above 'JSON-Server':--
+    * Home.js :--
+        >> import {useState,useEffect} from 'react';
+        >> import BlogList from './BlogList';
+        >> const Home = () => {
+   LineX>>         const [blogs,setBlogs] = useState(null);
+        >>          const [isPending,setIsPending] = useState(true);
+        >>          const [error,setError] = useState(null);
+        >>          useEffect(()=>{
+        >>              setTimeout(()=>{
+        >>                  fetch('http:localhost:8000/blogs')
+        >>                          .then(res=>{
+        >>                                  if (!res.ok){
+        >>                                      throw Error('Sorry');
+        >>                                               }
+        >>                                  return res.json();
+        >>                                      })
+        >>                                .then(data=>{
+        >>                                          setBlog(data);
+        >>                                          setIsPending(false);
+        >>                                          setError(null);
+        >>                                             })
+        >>                                      .catch(err=>{
+        >>                                              setError(err.message);
+        >>                                              setIsPending(false);
+        >>                                                  });
+        >>                             },1000);
+   LineY>>                         },[]);
+        >>          return(
+        >>              <div>
+        >>                  {error && <div>{error}</div>}
+        >>                  {isPending && <div>Loading...</div>}
+        >>                  {blogs && <BlogList blogs={blogs} title='All Blogs!'/>}
+        >>              </div>
+        >>                  );
+        >>                      };
+
+* The Whole Logic to fetch data that includes code lines from 'LineX' to 'LineY' can be put in another file and used as a custom hook in this file as a single line.
+    * Create a custom hook :-- /customhooks/useFetch.js :--
+        >> import {useState,useEffect} from 'react';
+        >> const useFetch = () => {
+        >>          const [ data, setData ] = useState(null);
+        >>          const [isPending, setIsPending] = useState(true);
+        >>          const [error,setError] = useState(null);
+        >>          useEffect(()=>{
+        >>              setTimeout(()=>{
+        >>                      fetch(url)
+        >>                          .then(res=>{
+        >>                                  if(!res.ok){
+        >>                                      throw Error('sorry');
+        >>                                              }
+        >>                                  return res.json();
+        >>                                      })
+        >>                               .then(data_yo=>{
+        >>                                      setData(data_yo);
+        >>                                      setIsPending(false);
+        >>                                      setError(null);
+        >>                                              })
+        >>                                      .catch(err=>{
+        >>                                             setIsPending(false);
+        >>                                             setError(err.mesaage);
+        >>                                                  });
+        >>                              },1000)
+        >>                         },[]);
+        >> export default useFetch;
+    * Now Look at 'Home.js' :--
+        >> import BlogList from './BlogList';
+        >> import useFetch from './useFetch';
+        >> const Home = () => {
+        >>          const {data:blogs,isPending,error} = useFetch('http://localhost:8000');
+        >>          return (
+        >>              <div>
+        >>                  {error && <div>{error}</div>}
+        >>                  {isPending && <div>Loading ...</div>}
+        >>                  {blogs && <BlogList blogs={blogs}/>}
+        >>              </div>
+        >>                  )
+        >>                      };
+        >> export default Home;
+    
+* React-Router :--
+    * Install with $ npm install react-router-dom
+    * Usually in Vanilla_JS if you go to '/' path in any web app, a GET req will be sent to the server. If you redirect to '/create', a GET request will be again sent to server.
+    * App.js :-
+        >> import Home from './Home';
+        >> import {BrowserRouter,Route,Routes} from 'react-router-dom';
+        >> import Create from './Create';
+        >> import BlogDetails from './BlogDetails';
+        >> function App () {
+        >>      return (
+        >>          <Router>
+        >>              <Routes>
+        >>                  <Route exact path='/' element={<Home/>}/>
+        >>                  <Route exact path='/create' element={<Create/>}/>
+        >>                  <Route exact path='/blogs/:id' element={<BlogDetails/>}/>
+        >>              </Routes>
+        >>          </Router>
+        >>              )
+        >>                  }
+        >> export default App();
+
+    * BlogList.js :-
+        >> import {Link} from 'react-router-dom';
+        >> const BlogList = ({blogs}) => {
+        >>          return (
+        >>              <div>
+        >>                  {blogs.map(blog=>{
+        >>                          <div key={blog.id}>
+        >>                              <Link to={`/blogs/${blog.id}`}><h2>{blog.title}</h2></Link>
+        >>                          </div>
+        >>                                  };
+        >>             </div>
+        >>                  )
+        >>                                };
+        >> export default BlogList;
+        
+    * BlogDetails.js :--
+        >> import {useParams} from 'react-router-dom';
+        >> import useFetch from './useFetch';
+        >> const BlogDetails = () => {
+        >>           const {id} = useParams();
+        >>           const {data:blog,error,isPending} = useFetch('http://localhost:8000/blogs'+id);
+        >>           return (
+        >>              <div>
+        >>                  {isPending && <div>Loading ...</div>}
+        >>                  {error && <div>{error}</div>}
+        >>                  {blog && (<article>
+        >>                              <h2>{blog.title}</h2>
+        >>                              <p>{blog.body}</p>
+        >>                            </article>
+        >>                  }
+        >>              </div>
+        >>                  )
+        >>                             };
+        >> export default BlogDetails;
+        
+* Controlled Inputs in forms & submitting data :--
+    * Create.js :--
+        >> import {useState} from 'react';
+        >> import {useNavigate} from 'react-router-dom';
+        >> const Create = () => {
+        >>      const [title,setTitle] = useState('');
+        >>      const [body,setBody]   = useState('');
+        >>      const [author,setAuthor] = useState('');;
+        >>      const [isPending,setIsPending] = useState('');
+        >>      const navg = useNavigate();
+        >>      const handleSubmit = (e) => {
+        >>          e.preventDefault();
+        >>          cosnt blog = {title,body,author}
+        >>          setIsPending(true);
+        >>          fetch('http://localhost:8000/blogs',{method:'POST',header:{'Content-Type':'application/json'},body:JSON.stringify(blog);})
+        >>                  .then(()=>{
+        >>                      console.log('blog added');
+        >>                      setIsPending(false);
+        >>                      navg('/');
+        >>                             })
+        >>                          .catch(err=>{
+        >>                                  console.log(err);
+        >>                                      });
+        >>                                  };
+        >>      return (
+        >>          <div>
+        >>              <h2>Add New Blog :</h2>
+        >>              <form onSubmit={e=>handleSubmit(e)}>
+        >>                  <label>Blog Title:</label>
+        >>                  <input type = 'text' required value={title} onChange={e=>setTitle(e.target.value)}/>
+        >>                  <label>Blog Body:</label>
+        >>                  <textarea required value={body} onChange={e=>setBody(e.target.value)}/>
+        >>                  <label>Blog Author:</label>
+        >>                  <select value={author} onChange={e=>setAuthor(e.target.value)}/>
+        >>                      <option value='mario'>mario</option>
+        >>                      <option value='luigi'>luigi</option>
+        >>                  </select>
+        >>                  {!isPending && <button type='submit'>Add Blog</button>}
+        >>                  {isPending && <button type='submit'>Adding Blog...</button>}
+        >>              </form>
+        >>          </div>
+        >>              )
+        >>                        };
+        >> export default Create;
+
+* Deleting a Blog :--
+    * BlogDetails.js :--
+        >> import {useParams,useNavigate} from 'react-router-dom';
+        >> import useFetch from './useFetch';
+        >> const BlogDetails = () => {
+        >>          const {id}   = useParams();
+        >>          const useNav = useNavigate();
+        >>          cosnt {data:blog,error,isPending} = useFetch('http://localhost:8000/'+id);
+        >>          const handleClick = 
+        >>          return (
+        >>              <div>
+        >>                  {isPending && <div>Loading ...</div>}
+        >>                  {error && <div>{error}</div>}
+        >>                  {blog && (
+        >>                              <article>
+        >>                                  <h2>{blog.title}</h2>
+        >>                                  <p>Written by {blog.author}</p>
+        >>                                  <button onClick = {handleClick}>
+        >>                                      Delete
+        >>                                  </button>
+        >>                              </article>
+        >>                            )};
+        >>              </div>
+        >>                  );
+        >>                            };
+        >> export default BlogDetails;
+        
+* Adding a 404 page :--
+    * Create component 'NotFound.js'
+    * NotFound.js :--
+        >> import {Link} from 'react-router-dom';
+        >> const NotFound = () => {
+        >>          return (
+        >>              <div>
+        >>                  <h2>404 Error!</h2>
+        >>                  <Link to='/'>Back to home ...</Link>
+        >>              </div>
+        >>                  )
+        >>                          }
+        >> export default NotFound;
+        
+    * App.js :-- Add the following path in the end, after all routes.
+        >>  <Route path='*' element={<NotFound/>}/>
+
+* useContext: --
+    * useContext hook:--
+        * Context API :--
+            * This is used to share 'state' all over the app efficiently.
+            * This prevents us from using old school Prop Drilling method.
+            * Prop Drilling Ex :--
+                        App.js 
+                           |
+                ------------------------
+                |                      |
+                v                      v
+             Navbar.js               Home.js
+                |
+                v
+        ------------------
+        |                |
+        v                v
+     NavbarCom1.js      NavbarCom2.js
+
+            * In the above figure if you want to send a prop to 'NavCom2.js', you first send it from 'App.js' to Navbar.js, then from there to 'NavCom2.js'
+            * But by using 'useContext' api, you can make that prop available to all the components from 'App.js' to 'NavbarCom2.js'.
+            * using ContextAPI we create a context in a seperate file. We provide it to component tree so that they can access & get the data.We then wrap the 'contextprovider' tag around the components that wants to access this state.
+    * Creating a Context file :--
+        * Create /src/contexts/ThemeContext.js :--
+            >> import {createContext} from 'react';
+            >> export const ThemeContext = createContex();
+            >> class ThemeContextProvider extends Component{
+            >>      state = {
+            >>                 isLightTheme : true,
+            >>                 light : {syntax:'#555',ui:'#ddd',bg:'#eee'},
+            >>                 dark  : {syntax:'#ddd',ui:'#333',bg:'#555'}
+            >>               };
+            >>      render(){
+            >>          return (
+            >>              <ThemeContext.Provider value={{...this.state}}>
+            >>                  {this.props.children}
+            >>              </ThemeContext.Provider>
+            >>                  );
+            >>              }:
+       * Making required components use the context and its state values in App.js :--
+            >> import ThemeContextProvider from './contexts/ThemeContext';
+            >> function App() {
+            >>      return (
+            >>          <div>
+            >>              <ThemeContextProvider>
+            >>                  <Navbar/>
+            >>                  <BlogList/>
+            >>              </ThemeContextProvider>
+            >>          </div>
+            >>              )
+            >>                 };
+            >> export default App;
+
+    * Accessing Context :--
+        * src/components/Navbar.js :--
+            >> import {Component} from 'react';
+            >> import {ThemeContext} from './contexts/ThemeContext';
+            >> class Navbar extends Component {
+            >>      static contextType = ThemeContext;
+            >>      render(){
+            >>          const {isLightTheme,light,dark} = this.context;
+            >>          const theme = isLightTheme ? light :dark;
+            >>          return (
+            >>              <nav style= {{background:theme.ui,color:theme.syntax}}>
+            >>                  <h1>Context API</h1>
+            >>                  <ul>
+            >>                      <li>Home</li>
+            >>                      <li>About</li>
+            >>                      <li>Contact</li>
+            >>                  </ul>
+            >>              </nav>
+            >>                  )
+            >>              };
+            >>                                  };
+            >> export default Navbar;
+    * Updating the Context Data :--
+        * Add the following function inside 'src/contexts/ThemeContext.js' file,inside the class 'ThemeContextProvider':-
+            >> toggleTheme = () => {
+            >>      this.setState({isLightTheme : !this.state.isLightTheme});
+            >>                      }
+
+        * Update the 'value' prop inside the 'ThemeContextProvider' tag so that 'toggleTheme' can be accessed globally.
+            >> <ThemeContext.Provider value={{...this.state,toggleTheme}}>
+            
+        * Create src/components/ToggleTheme.js :--
+            >> import {ThemeContext} from '../contexts/ThemeContext';
+            >> class ToggleTheme extends Component {
+            >>      static contextType = ThemeContext;
+            >>      render(){
+            >>          const {toggleTheme:toggT} = this.context;
+            >>          return(
+            >>              <button onClickc = {toggT}> Toggle </button>
+            >>                --------------------------------------
+            >>                  --------------------
+            >>                  )
+            >>               };
+            >>                                      };
+            >> export defualt ToggleTheme;
+        * Now add '<ToggleTheme/>' inside '<ThemeContextProvider>' tags alongside '<Navbar/>' and '<BlogList/>'.
+    * Creating multiple contexts :--
+        * Create 'src/contexts/AuthContext.js':-
+            >> import {Component,createContext} from 'react';
+            >> export const AuthContext = createContext();
+            >> class AuthContextProvider extends Component {
+            >>      state = {
+            >>           isAuthenticated : false;
+            >>              }
+            >>      toggleAuth = () => {
+            >>          this.setState({isAuthenticated: !this.state.isAuthenticated})
+            >>                          }
+            >>      render() {
+            >>          return (
+            >>              <AuthContext.Provider value={{...this.state,toggA:this.toggleAuth}}>
+            >>
+
+
+
+

@@ -1,0 +1,435 @@
+
+Process :-- Let's consider an app named 'Workout Tracker':
+   
+   * Create a 'backend' folder and initialize npm.
+         $ npm init -y
+   * Create a 'server.js' file inside 'backend' folder.
+   * server.js :--
+        >> require('dotenv').config(); ----------------> Used to access data from '.env' file.
+        >> const cors = require('cors');
+        >> const exp = require('express');
+        >> const app = exp();
+        >> const wRt = require('./routes/workouts');
+        >> const mog = require('mongoose');
+        
+        >> app.use(exp.json()); ------------------------> Used to treat req body data as JSON instead of undefined.
+        
+        >> app.use(cors()); ----------------------------> To Prevent CORS Errors.
+
+        >> app.use('/api/workouts',wRt);
+
+        >> mongoose.connect(process.env.MONGOURL).then(()=>{
+        >>                                          app.listen(process.env.PORT,()=>{
+        >>                                                  console.log(`Connected & Listening at ${process.env.PORT`);
+        >>                                                                           })}
+        >>                                             ).catch(err=>{console.log(err)});
+
+    * All 'wRt' routes imported in 'server.js' should be defined inside '/routes/workouts.js':--
+        >> const exp = require('express');
+        >> const Wkt = require('../models/workoutModel');
+        >> const {getWrkts,getWrkt,createWrkt,delWrkt,patchWrkt} = require('../controllers/workoutControllers');
+        >> const router = exp.Router();
+        >> router.get('/',getWrkts);
+        >> router.get('/:id',getWrkt);
+        >> router.post('/',createWrkt);
+        >> router.delete('/:id',delWrkt);
+        >> router.patch('/:id',patchWrkt);
+        >> module.exports = router;
+
+    * These router controllers are defined inside '/controllers/workoutControllers'.
+    * The database model & schema that is imported in every file above is defined inside '/models/workoutModel'.
+
+
+    * Create a 'frontend' react app with ,
+        $ npx create-react-app frontend
+    * Add a proxy field inside 'package.json':
+        "proxy":"http://localhost:4000",
+
+    * Also Install 'react-router-dom' npm package inside the react app.
+        $ npm install react-router-dom
+    * App Structure :--
+        backend/
+        frontend/
+            node_modules/
+            public/
+                index.html
+                manifest.json
+            src/
+                App.js
+                index.css
+                index.js
+            .gitignore
+            package-lock.json
+            package.json
+            README.md
+
+    * Create a folder inside 'src/' , 'pages'.
+
+    * App.js:--
+        >> import {BrowserRouter,Routes,Route} from 'react-router-dom';
+        >> import Home from './pages/Home';
+        >> import Navbar from './components/Navbar';
+        >> function App() {
+        >>      return (
+        >>          <div className = 'App'>
+        >>              <BrowserRouter>
+        >>                  <Navabar/> 
+        >>                  <div className = 'pages'>
+        >>                      <Routes>
+        >>                          <Route path='/' element={<Home/>}/>
+        >>                      </Routes>
+        >>                  </div>
+        >>              </BrowserRouter>
+        >>          </div>
+        >>              ) };
+    * src/pages/Home.js :--
+        >> const Home = () => {
+        >>      return (
+        >>          <div className = 'home'>
+        >>              <h2>Home</h2>
+        >>          </div>
+        >>              )
+        >>                      };
+        >> export default Home;
+
+    * src/components/Navbar.js :--
+        >> import {Link} from 'react-router-dom';
+        >> const Navbar = () => {
+        >>      return (
+        >>          <header>
+        >>              <div className = 'container>
+        >>                  <Link to ='/'><h1>Workout Buddy</h1></Link>
+        >>              </div>
+        >>          </header>
+        >>              )
+        >>                      }
+        >> export default Navbar;
+
+
+    * Fetching Data from to the frontend using the Backend API:--
+        *src/pages/Home.js :--
+            >> import {useEffect,useState} from 'react';
+            >> import WrktDetails from '../components/WrktDetails';
+            >> const Home = () => {
+
+            >>      const [wrkts,setWrkts] = useState(null);
+
+            >>      useEffect(()=>{
+            >>              const fetchWrkts = async () => {
+            >>                          cosnt resp = await fetch('/api/workouts');
+            >>                          const json = await resp.json();
+            >>                          if(resp.ok){
+            >>                              setWrkts(json);
+            >>                                      }
+            >>                                              }
+            >>              fetchWrkts();
+            >>                      },[])
+
+            >>      return (
+            >>          <div className = 'home'>
+            >>              <div>
+            >>                  {wrkts && wrkts.map((w)=>(
+            >>                                        <WrktDetails key={w._id} wt={w}/>
+            >>                                          ))}
+            >>              </div>
+            >>          </div>
+            >>              )
+            >>                      };
+            >> export default Home; 
+
+        *src/components/WrktDetails:-
+            >> const WrktDetails = ({wt}) => {
+            >>      return (
+            >>          <div className = 'wrkt-det'>
+            >>              <h4>{wt.title}</h4>
+            >>              <p><strong>Load : </strong>{wt.load}</p>
+            >>              <p><string>Reps : </string>{wt.reps}</p>
+            >>              <p>{wt.createdAt}</p>
+            >>          </div>
+            >>              )
+            >>                                }
+            >> export default WrktDetails;
+
+    * Adding a New Workout:--
+        * src/components/WrktForm.js :--
+            >> import {useState} from 'react';
+            >> const WrktForm = () => {
+            >>      const [title,setTitle] = useState('');
+            >>      const [load,setLoad]   = useState('');
+            >>      const [reps,setReps]   = useState('');
+            >>      const [error,setError] = useState(null);
+
+            >>      const handleSubmit = async (e) => {
+            >>           e.preventDefault();
+            >>           const new_wrkt = {title,load,reps};
+            >>           const resp     = await fetch('/api/workouts',{method:'POST',body:JSON.stringify(new_wrkt),headers:{'Content-Type':'application/json'}});
+            >>           const json     = await resp.json();
+            >>           if(!resp.ok){
+            >>                  setError(json.error);
+            >>                       };
+            >>           if(resp.ok){
+            >>                  setError(null);
+            >>                  console.log('new wrkt added');
+            >>                  setTitle('');
+            >>                  setLoad('');
+            >>                  setReps('');
+            >>                       }
+            >>                                         }            
+
+            >>      return (
+            >>          <form className='new_wrkt' onSubmit={handleSubmit}>
+            >>              <h3> Add a new workout</h3>
+            >>              <label>Exercise Title</label>
+            >>              <input type='text' onChange={(e)=>setTitle(e.target.value)} value={title}/>
+
+            >>              <label>Load :</label>
+            >>              <input type='number' onChange={(e)=>setLoad(e.target.value)} value={load}/>
+            
+            >>              <label>Reps :</label>
+            >>              <input type='number' onChange={(e)=>setReps(e.target.value)} value={reps}/>
+
+            >>              <button type='submit'>Submit</button>
+            >>              {error && <div>{error}</div>}
+            >>         </form>
+            >>              );           };
+
+            >> export default WrktForm;
+    
+        * src/pages/Home.js :--	
+            >> import WrktForm from '../components/WrktForm';
+            ...........
+            ...........
+            ...........
+            ..........
+            * Add 'WrktForm' in the end, to render it below <button>
+
+    * After all the Above Steps, you can add a New Workout. But, as soon as you add a new one, you can't see them on the homepage, you have to refresh the page. We'll see about that now.
+    * The reason we don't see new / updated list of workouts on the home page after adding one is bcoz the local react state for 'workouts' isn't in sync with the collection inside the database.
+    * Modified 'index.js':--
+        >> import React from 'react';
+        >> import ReactDOM from 'react-dom/client';
+        >> import './index.css';
+        >> import App from './App';
+        >> import {WrktContextProvider} from './contexts/WorkoutContext.js';
+
+        >> const root = ReactDOM.creatRoot(document.getElementById('root'));
+        >> root.render(
+        >>      <Root.StrictMode>
+        >>          <WorkoutContextProvider>
+        >>              <App />
+        >>          </WorkoutContextProvider>
+        >>      </Root.StrictMode>
+
+    * Create src/contexts/WorkoutContext.js :--
+        >> import {createContext} from 'react';
+
+        >> export const  WrktContext = createContext();
+
+        >> export const wrktsReducer = (state,action) => {
+        >>      switch(action.type){
+        >>          case 'SET_WRKTS':
+        >>              return {
+        >>                  wrkts : action.payload;
+        >>                      }
+        >>          case 'CREATE_WRKTS:
+        >>              return {
+        >>                  wrkts : [action.payload,...state.wrkts];
+        >>                      }
+        >>          case 'DELETE_WRKT':
+        >>              return {
+        >>                  wrkts : state.workouts.filter(w=>w._id !== action.payload._id);
+        >>                      }
+        >>          default :
+        >>              return state;
+        >>                          }
+        
+        >> export const  WrktContextProvider = ({children}) => {
+        
+        >>      const [state,dispatch] = useReducer(wrktsReducer,{wrkts:null});
+
+        >>      return (
+        >>          <WrktContext.Provider value={{ ...state,dispatch }}>
+        >>              {children}
+        >>          </WrktContext.Provider>
+        >>              )
+        >>                                            };
+
+    * We can use 'useContext' to consume the context anywhere we want. But, here we are creating a custom hook:--
+        * src/hooks/useWrktContext.js :--
+            >> import {WrktContext} from '../contexts/WrktContext';
+            >> import {useContext} from 'react';
+
+            >> export const useWrktContext = () => {
+            >>      const context = useContext(WrktContext); --> this means 'context' = an array of '...state' and 'dispatch'
+            >>      if (!context) {
+            >>          throw Error('useWrktContext must be used inside components that have permission to access wrktContext');
+            >>                     };
+            >>      return context;
+            >>                                      }
+    
+    * Now we can access the global 'workouts' state anywhere in the app.
+    * Let's modify Home.js, WrktForm.js so that instead of using 'useState' to modify and update the 'workouts' variable after fetching/posting data, we are going to use 'useWrktContext'.
+    * By doing the above, we are using a single global 'workouts' state instead of local states.
+    * Home.js :--
+        >> const Home = () => {
+        >>      const {wrkts,dispatch} = useWrktContext();
+        >>      useEffect(()=>{
+        >>          const fetchWrkts = async () => {
+        >>              const resp = await fetch('/api/workouts');
+        >>              const json = await resp.json();
+        >>              if(resp.ok){
+        >>                  dispatch({type:'SET_WRKTS',payload:json});
+        >>                         }
+        >>                                          }
+        >>          fetchWrkts();
+        >>                     },[]);
+
+    * WrktForm.js :--
+        >> import {useWrktContext} from '../hooks/useWrktContext';
+        >> const WrktForm = () => {
+        >>      const {dispatch}        = useWrktContext();
+        >>      const [title,setTitle]  = useState('');
+        >>      const [load,setLoad]    = useState('');
+        >>      const [reps,setReps]    = useState('');
+
+        >>      const handleSubmit = async() => {
+        >>                              e.preventDefault();
+        >>                              const new_wrkt = {title,load,reps};
+        >>                              const resp     = await fetch('/api/workouts',{method:"POST",body:JSON.stringify(new_wrkt),headers:{'Content-Type':'application/json'}});
+        >>                              const json     = await resp.json();
+        >>                              if(!resp.ok){
+        >>                                    setError(json.error);
+        >>                                           };
+        >>                              if(resp.ok){
+        >>                                   setError(null);
+        >>                                   console.log('new wrkt added');
+        >>                                   setTitle('');
+        >>                                   setLoad('');
+        >>                                   setReps('');
+        >>                                   dispatch({type:"CREATE_WRKT",payload:json})
+        >>                                           }
+        >>                                         }
+        >>      return (
+        >>          --------------------------------
+        >>          --------------------------------
+        >>          --------------------------------
+        >>          --------------------------------
+        >>              )
+        >>                          }
+
+
+    * Deleting Wrkts :--
+        * Inside 'WrktDetails.js', add a 'delete' button.
+        * Tie it with an 'event Listener' that triggers 'handleDel' function.
+        >> const handleClick = async () => {
+        >>      const response = await fetch('/api/workouts/'+w._id,{method:"DELETE"});
+        >>      const json     = await response.json();
+        >>      if (response.ok) {
+        >>          dispatch({type:'DELETE_WRKT',payload:json});
+        >>                        } 
+        >>                                   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

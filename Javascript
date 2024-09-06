@@ -1,0 +1,443 @@
+--> Javascript Comments :-- 
+        --> Single Line Comments :-- 
+                >> //This is a single line comment
+        --> Multi  Line Comments :--
+                >> /* this is a multi
+                >> line comment */
+
+--> Variables :-- 
+        --> Declared with 'let' is NOT RE-DECLARABLE and MUTABLE
+        --> Declared with 'var' is RE-DECLARABLE and MUTABLE
+        --> Declared with 'const' is NOT RE-DECLARABLE and IMMUTABLE
+
+        --> 'let' and 'const' has block scope.
+
+--> String :--
+        >> let str = 'Jeman';
+        
+        --> What won't work :--
+               >> str[0] = 'L';  --> This won't change 'Jeman' to 'Leman'
+
+        --> What will work :--
+               >> str = 'Leman' ;  --> This will work
+
+
+--> Arrays :--
+        >> let arr = [1,2,3,4,5];
+
+        --> Array METHODS :--
+                >> arr.push(6);
+                >> console.log(arr); --> This will give [1,2,3,4,5,6];
+
+                >> arr.pop();
+                >> console.log(arr); --> This will give [1,2,3,4,5];
+
+                >> arr.unshift(0);
+                >> console.log(arr); --> This will give [0,1,2,3,4,5];
+
+                >> arr.shift();
+                >> console.log(arr); --> This will give [1,2,3,4,5];
+
+--> Scope :--
+        --> Block Scope :--
+                >> {let x = 2};
+                >> console.log(x); --> This will output 'x is not defined'
+            
+        --> Function Scope :--
+                --> Can be accessed only inside functions.
+        
+        --> Global Scope :--
+                --> Can be accessed all over the code.
+
+
+--> Functions :--
+        --> Example1 :--
+        >> function fun1() {
+        >>      console.log('Do Something !');
+        >>                  };
+
+
+        --> Example2 :--
+        >> let x = 0;
+        >> function fun2() {
+        >>      x += 1;
+        >>      console.log(x);
+        >>      if (x<10){
+        >>          fun1();
+        >>               }
+        >>      return ;
+        >>                  }; --> Output 1,2,3,4,5,6,7,8,9,10
+
+        --> Example 3:--
+        >>  function fun(x,y) {
+        >>      console.log(x+y);
+        >>                    };
+        >>  fun(1,3) --> Outputs 4
+
+        
+--> Lexical Scope :--
+        
+
+--> If & If-Else Conditions :--
+        >> if (x>5)
+        >>  {
+        >>      console.log('x is greater than 5!');
+        >>  }
+        >> else 
+        >>  {
+        >>      console.log('x is not greater than 5!');
+        >>  }
+
+--> For Loop :--
+        >> for (let i = 0; i<5; i++) {
+        >>      console.log(x);
+        >>                           };
+
+--> For In Loop :-- Treats every iterable as object and returns keys:
+        >> let x = ['jeman','jeevan'];
+        >> for (var i in x){
+        >>      console.log(i);
+        >> }
+         * output :-- 0 1
+--> For Of Loop :-- Treats every iterable as object and returns values:
+        >> for (var i of x){
+        >>      console.log(i);
+        >> };
+         * output :-- 'jeman' 'jeevan'
+
+
+--> While Loop :--
+        >> let x = 5;
+        >> while (x<10) {
+        >>      console.log(x);
+        >>      i ++ ;
+        >>              };
+
+--> Do-While Loop :--
+
+        
+
+--> Switch Case :-- In the following code, you should definitely use 'break'.
+        >> switch (a) {
+        >>      case 'a':
+        >>          console.log(a is 'a');
+        >>          break;
+        >>      case 'b':
+        >>          console.log(a is 'b');
+        >>          break;
+        >>      case 'c':
+        >>          console.log(a is 'c');
+        >>          break;
+        >>      case 'd':
+        >>      case 'e':
+        >>      case 'f':
+        >>          console.log(a is 'd/e/f');
+        >>          break;
+        >>      default:
+        >>          console.log(a is something else);
+        >>          break;
+        >>            };
+
+--> Objects :--
+        >> const cat = {
+        >>      "name" : "Whiskers",
+        >>          4  : 'legs',
+        >>      'ears' : 2,
+        >>  'Anim_Type': "mammal",
+        >>       model : 'Telsa'
+        >>              };
+
+        --> Accessing Objects :--
+        >> console.log(cat.name);
+        >> console.log(car.model);
+        >> console.log(car[model]);-->Doesn't work since 'model' isn't a string in the object definition above.
+        >> console.log(car[4]);
+        >> console.log(car.4); ------>Doesn't work
+        
+        --> Preventing Object Mutation :--
+        >> Object.freeze(cat);
+
+        --> Checking for a property :--
+        >> console.log(car.hasOwnProperty('ears')); --> Outputs boolean.
+
+        --> Deleting a property for JS Object :--
+        >> delete car.ears;
+
+--> Object Oriented Programming :--
+        --> Class : -- A Blueprint to create similiar objects. Its a template definition of the methods and variables in a particular kind of object.
+        >> class SpaceShuttle {
+        >>      constructor (targetPlanet) {
+        >>              this.targetPlanet = targetPlanet;
+        >>                                  }
+        >>      takeOff() {
+        >>              console.log("To " + this.targetPlanet);
+        >>                  };
+        >>                     };
+        >> const zeus = new SpaceShuttle("Venus");
+        >> zeus.takeOff();
+
+--> Object Literal vs JSON :--
+        --> Object Literal :-- Props and Their Values can be anything,
+                               By anything we mean they can be functions too.
+        --> JSON           :-- Props should be double quoted.
+                               If Values of props are strings, they should be double quoted too.
+                               Values of props can be str/num/bool/null/array
+                               Values of prpos can't be non-ordinary objects like 'Date Object' or 'Regex'.
+
+--> Principles of OOPS :--
+        1.Inheritance :--
+
+            --> Without Inheritance :--
+            >> class Animal {
+            >>      constructor(name,sound) {
+            >>          this.name  = name;
+            >>          this.sound = sound;
+            >>                              }
+            >>      makeSound() {
+            >>          console.log(this.sound + " " +this.sound);
+            >>                  }
+            >>              };
+
+            >> class AnimalV2 {
+            >>      constructor(name,sound,limbs){
+            >>          this.name  = name; 
+            >>          this.sound = sound;
+            >>          this.limbs = limbs;
+            >>                                   }
+            >>      makeSound(){
+            >>          console.log(this.sound+" "+this.sound);
+            >>                  }
+            >>      runAnimaa() {
+            >>          console.log('This ANimal is running !');
+            >>                   }
+            >>                  };
+   
+            --> With Inheritance :--
+            >> class Animal {
+            >>      constructor(name,sound){
+            >>          this.name  = name;
+            >>          this.sound = sound;
+            >>                              }
+            >>      makeSound(){
+            >>          console.log(this.sound+' '+this.sound);
+            >>                 };
+            >>               };
+
+            >> class AnimalV2 extends Animal {
+            >>      constructor(name,sound,limbs){
+            >>          super(name,sound);
+            >>          this.limbs = limbs;
+            >>                                    }
+            >>      runAnimal(){
+            >>          console.log('This ANimal is running !');
+            >>                  };
+            >>                               };
+
+        2. Encapsulation :--
+            
+            --> An Object's capacity to make some properties private and some of them public.
+            >> class Animal{
+            >>      #birthDate
+            >>      constructor (name,sound,limbs,bYr) {
+            >>          this.name  = name;
+            >>          this.sound = sound;
+            >>          this.limbs = limbs;
+            >>          this.#birthYear = bYr;
+            >>                                          }
+            >>      age() {
+            >>          console.log(2023-this.#birthYear);
+            >>             }
+            >>              }
+            >> const dog = new Animal('Snoopy','bow',4,2020);
+            >> console.log(Animal.#birthYear) --> Gives Error
+            >> dog.age() -----------------------> Gives '3'
+
+        3. Abstraction :--  
+            
+
+
+        4. Polymorphism :--
+        
+
+
+
+
+--> AsyncJS :--
+        
+        * Usually JS runs synchronously[SingleThreaded].
+        * Synchronous Code stops the next line of code untill the current line of code is executed.
+        * AsyncJS Code makes the next line of code run by making the current line of code run as a different thread.
+        * How Async-Code Runs:--
+
+            line1
+              |
+              |
+              v
+            line2
+              |
+              |
+              v
+            line3 --> a code line that takes time --> We convert this line to a async function --> we will also pass a CALLBACK function to this line of code that runs after this line does it's thing
+              |                                                                                                             |
+              |                                                                                                             v
+              |                                                                                                         seperate thread
+              v                                                                                                             |
+            line4                                                                                                           |
+              |                                                                                                             |
+              v                                                                                                             |
+           In the End the callback will run <-------------------------------------------------------------------------------v
+
+
+
+        * Example :--
+            >> console.log(1);
+            >> console.log(2);
+            >> setTimeout(()=>{console.log("Callback Fired!");},2000); -----> console.log() is the callback function here. That function runs after 2 secs.
+            >> console.log(3); 
+
+            --> Output :-- 1
+                           2
+                           3
+                           Callback Fired!
+        * Async JS without Callback FUnction :--
+            >> const XMLHttpRequest = require('xhr2');
+            >> const getTodos = () => {
+            >>      const req = new XMLHttpRequest();
+            >>      req.addEventListener('readystatechange',()=>{
+            >>          if(req.readyState===4 && req.status === 200)
+            >>          {
+            >>              console.log(req.responseText);
+            >>          }
+            >>          else if (req.readyState===4){
+            >>              console.log('Sorry');
+            >>          }
+            >>                                                 }
+            >>                          )
+            >>      req.open('GET','https://jsonplaceholder.typicode.com/todos/1');
+            >>      req.send();
+            >>                          }
+            >> console.log(1);
+            >> getTodos();
+            >> console.log(2);
+            * Here the 'getTodos' function is 'Asynchronous'. But it doesn't have a callback function.
+
+        * Async JS with a Callback Function :--
+            >> const XMLHttpRequest = require('xhr2');
+            >> const getTodos = (callback) => {
+            >>      const req = new XMLHttpRequest();
+            >>      req.addEventListener('readystatechange',()=>{
+            >>          if(req.readyState===4 && req.status ===200)
+            >>          {
+            >>              callback(undefined,req.responseText);
+            >>          }
+            >>          else if (req.readyState === 4)
+            >>          {
+            >>              callback(sorry,undefined);
+            >>          }
+            >>                                                  });
+            >>      req.open('GET','https://jsonplaceholder.typicode.com/todos/1');
+            >>      req.send();
+            >>                               };
+            >> console.log(1);
+            >> getTodos((err,data)=>{----------> Defining CallBack Function.
+            >>      if(err){
+            >>          console.log(err);
+            >>              }
+            >>      else{
+            >>          console.log(data);
+            >>          }
+            >>                      });
+            >> console.log(2);
+
+        * Callback Hell :-- Let's say you have to access multible data resources.
+            >> console.log(1)
+            >> getTodos((err,data)=>{
+            >>      if(err){
+            >>          console.log(err);
+            >>              }
+            >>      else{
+            >>          console.log(data);
+            >>          }
+            >>                  },'./data1.json');
+            >> getTodos((err,data)=>{
+            >>      if(err){
+            >>          console.log(err);
+            >>              }
+            >>      else{
+            >>          console.log(data);
+            >>          }
+            >>                      },'./data2.json');
+            >> console.log(2);
+
+
+        * Promises :-- Helps us prevent Callback Hell
+            >> const getTodos = (resource) => {
+            >>      return new Promise((resolve,reject)=>{
+            >>          const req = new XMLHttpRequest();
+            >>          req.addEventListener('readystatechange',()=>{
+            >>               if (req.readyState === 4 && req.status === 200)
+            >>               {
+            >>                    const dat = JSON.parse(req.responseText);
+            >>                    resolve(dat);
+            >>               }
+            >>               else if (req.readyState === 4)
+            >>               {
+            >>                    reject("Sorry, There's an error!");
+            >>               }
+            >>                                                      });
+            >>          req.open("GET",resource);
+            >>          req.send();
+            >>                                          });
+            >>                               }
+            >> console.log(1);
+            >> getTodos('index.json').then(data=>{
+            >>                              console.log(data);
+            >>                                   }
+            >>                            ).catch(error=>{
+            >>                              console.log(error);
+            >>                                           }
+            >>                                   );
+            >> console.log(2);
+       * Chaining Promises :--
+            >> getTodos('index1.json').then(data=>{
+            >>                              console.log(data);
+            >>                              return getTodos('index2.json');
+            >>                                    }).then(data=>{
+            >>                                          console.log(data);
+            >>                                                  }).catch(err=>{
+            >>                                                          console.log(err);
+            >>                                                                 });
+
+
+       * Fetch API :--
+            * A Fetch function returns a promise.
+            * Unlike other promises, this 'fetch' function doesn't reject when url/resource path is wrong. It only rejects when there's a network issue.  
+            * The Response Text unlike the previous responsed in'st inside the 'body' value. It's inside the 'json' key nested inside '__proto__' key's value.
+              You can access it with 'response.json()'.
+        
+            >> fetch('resource.json/some_url_yo').then(resp=>{
+            >>          return resp.json();
+            >>                                               }).then(data=>{
+            >>                                                      console.log(data);
+            >>                                                              }
+            >>                                                        ).catch(err=>{
+            >>                                                              console.log(err);
+            >>                                                                      })
+
+
+        * Async & Await :-- The most efficient way to do all the above shit.\
+            * An Async Function always returns a promise.
+            >> const getTodos = async () => {
+            >>          const resp = await fetch('x1.json');
+            >>          const data = await resp.json();
+            >>          return data;
+            >>                              };
+            >> getTodos().then(data=>{
+            >>              console.log('resolved:',data);
+            >>                       }).catch(err=>{console.log(err)}).
+    
+        
+
+
+
+

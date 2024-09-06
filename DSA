@@ -1,0 +1,197 @@
+Big O Notation :--
+     * Used to select a better,efficient solution for a problem
+     * Comparing Solutions :--
+        * Adding numbers up to n:--
+            * Way 1:
+                >> function addupto(n){
+                >>      let total = 0;
+                >>      for (let i = 1; i <= n; i++) {
+                >>          total += i;
+                >>                                   }
+                >>      return total;
+                >>                     };
+
+            * Way 2:
+                >> function addupto(n){
+                >>      return n*(n+1)/2;
+                >>                     }
+     * Clearly Way 2 is far efficient compared to Way 1.
+
+     * Evaluating Code's Efficiency in terms of Time Complexity:--
+        * Timing Code :--
+            * If you time the above code, the about of time taken to execute will differ due to different factors.
+            * Even if it's in the same computer.
+            * Disadvantages of Timing :--
+                * Different machines will record different times.
+                * The Same Machine will record different times.
+                * For Efficient/Fast algos, timing code won't give accurate differences.
+        * Counting Unique / Distinct Operations :--
+            * 
+
+        * Best way :-- Orders Of Growth :--        
+            * Change in time/no of operations with increase in input size for the same algo / code.
+        
+        * Worst vs Best Case :--
+            >> function search_for_elemnt(L,e){
+            >>      for( var i = 0; i<L.length;i++){
+            >>          if (L[i] == e){
+            >>              return true;
+            >>                        }
+            >>          return false;
+            >>                                      }
+            >>                                }
+
+            * Best Case :-- When 'e' in the above code is the first element in 'L'.
+            * Worst Case :-- When 'e' is not in 'L'.
+
+
+        * Big O Notations :--
+            Ex 1 :-- n^2 + 2n + 2 -------------> O(n^2)
+            Ex 2 :-- n^2 + 10000n + 3^1000 ----> O(n^2)
+            Ex 3 :-- log n + n + 4 ------------> O(n)
+            Ex 4 :-- 0.001*n*log(n) + 300(n) --> O(nlogn)
+            Ex 5 :-- 2n^30 + 3^n --------------> O(3^n)
+
+        * Growths :-- The following deals with Graph of  Time(y) vs no of inputs(x).
+           * Exponential Growth :-- 
+                * A lot of increase in time/no of operations with a relatively small change in no of inputs.
+           * Quadratic Growth :--
+                * Constant INCREASE IN CHANGE IN TIME/NO OF OPS  with change in no of inputs.
+           * Linear Growth :--
+                * Constant CHANGE IN TIME/NO OF OPS with change in no of inputs.
+           * Contant :--
+                * No Change in time/no of ops with change in input size.
+           * Log :--
+                * Constant DECREASE IN CHANGE IN TIME/NO OF OPS with change in no of inputs.
+           * n Log n :--
+                * No idea.
+
+        * Law of Addition for Big O Notations:--
+            * O(f(n)) + O(g(n)) = O(f(n) + g(n))
+            * Ex :--    
+                O(n) + O(n^2) = O(n+n^2) = O(n^2)
+        * Law of Multiplication : --
+            * O(f(n)) * O(g(n)) = O(f(n) * g(n))    
+            * Ex :--
+                O(n) * O(n) = O(n^2)
+
+        * Time Complexity Comparision :--
+                      |   n=10  |  n = 100                                          |       n = 1000       | n = 1000000
+            -----------------------------------------------------------------------------------------------------------------
+            O(1)      |    1    |                                 1                 |               1      |               1
+            -----------------------------------------------------------------------------------------------------------------
+            O(log n)  |    1    |                                 2                 |               3      |               6
+            -----------------------------------------------------------------------------------------------------------------
+            O(n)      |   10    |                               100                 |            1000      |         1000000
+            -----------------------------------------------------------------------------------------------------------------
+            O(nlog n) |   10    |                               200                 |            3000      |         6000000
+            -----------------------------------------------------------------------------------------------------------------
+            O(n^2)    |  100    |                             10000                 |         1000000      |   1000000000000
+            -----------------------------------------------------------------------------------------------------------------
+            O(2^n)    | 1024    |   1267650600228229401496703205376 = 1.2676506e+30 |   1.07150860e+301    |    GOOD LUCK
+            -----------------------------------------------------------------------------------------------------------------
+
+Auxilary Space Complexity :--
+    * This deals with the space taken by the algorithm excluding the space taken by the inputs.
+    * In JS , booleans, numbers, undefined, null take constant space
+    * Strings Space Complexity is O(n) where 'n' is length of string.
+    * Ex :-- A loop that goes through an array, picks each element and adds it to the total.
+             Space Complexity = O(1) ---> Bcoz no matter how long the array is, the array is stores with constant space and 
+                                          the 'total' is stored with constant space
+             But if the loop pushes the elements to another array and return that array instead of adding elements to 'total',
+             Space Complexity = O(n)
+    
+
+Objects :-- 
+    * Unordered Key-Value pairs.
+    * Let instructor = {
+                firstName : 'Kelly',
+                isInstructor : true,
+                favNumbers : [1,2,3,4,5]
+                        }
+    * Time Complexity of Objects while,
+        Insertion :-- O(1)
+        Removal   :-- O(1)
+        Searching :-- O(n)
+        Access    :-- O(1) --> Javascript takes constant time to access any key-value pair
+
+    * Time Complexity of Object methods,
+        Object.keys           :-- O(n)
+        Object.values         :-- O(n)
+        Object.entries        :-- O(n)
+        Object.hasOwnProperty :-- O(1)
+
+Arrays :--
+    * Ordered Lists.
+    * let arr = [1,2,3,4,5]
+    * Time Complexity of Arrays while,
+        Insertion :-- O(1) if inserting at end & O(n) if inserting at front [since you have to re-index all the elements]
+        Removal   :-- O(1) if removing at the end & O(n) if removing at front [since you have to re-index all the elements]
+        Searching :-- O(n) 
+        Access    :-- O(1) --> Javascript takes constant time to access any element from array.
+    * Time Complexity of Array methods,
+        push      :-- O(1)
+        pop       :-- O(1)
+        shift     :-- O(n)
+        unshift   :-- O(n)
+        concat    :-- O(n)
+        slice     :-- O(n)
+        splice    :-- O(n)
+        sort      :-- O(nlogn)
+        forEach |
+        map     |
+        filter  |
+        reduce..| :-- O(n) 
+
+Problem Solving Patterns :--
+    * Frequence Counter :--
+        * Let's write a function that takes 2 arrays where each element's square in 1st array is in 2nd array irrespective of the order of arragement. Also the frequency of elements in both the arrays must be same.
+            Ex :-- same([1,2,3],[4,1,9]) --> gives true bcoz same frequency and all 1st array elements have their squares in 2nd array
+                   same([1,2,3],[1,9])   --> gives false bcoz '2' in 1st array doesn't have it's square in 2nd array.
+                   same([1,2,1],[4,4,1]) --> all elements in 1st array have their squares inside 2nd array, but the frequecies are different [ 2's square is found 2 times and the squares of two 1s is found only once in 2nd array]
+        * First way to write it :--
+            >> function same(arr1,arr2){
+            >>      //see if the lengths of 2 arrays are same
+            >>      if (arr1.length !== arr2.length){
+            >>          return false;
+            >>      }
+            >>      //loop through arr1 and see if each element has it's square in arr2. If you find it's square in arr2, then remove that element from arr2 and run the loop again till the end of arr1 and make sure there are no
+            >>      //elements in arr2 when you reach the end of arr1
+            >>      for (let i = 0; i < arr1.length; i++) {
+            >>          let correctIndex = arr2.indexOf(arr1[i] ** 2);
+            >>          if (correctIndex === -1){
+            >>              return false;
+            >>          }
+            >>          //Remove the element at correctIndex.
+            >>          arr2.splice(correctIndex 1);
+            >>      }
+            >>      return true;
+            >>      };
+            * Time Complexity :-- O(n^2) --> Bcoz 'indexOf' or 'splice' go through each element of the array. Hence they themselves are loops. Hence the above code has nested loops.
+        * Better way to do using frequency counter pattern :--
+            >> function same(arr1,arr2) { -----------------------> Example arr1 = [1,2,3,2], arr2 = [9,1,4,4]
+            >>      //see if both arrays are of same length.
+            >>      if (arr1.length !== arr2.length) {
+            >>          return false;
+            >>      }
+            >>      let frequencyCounter1 = {};
+            >>      let frequencyCounter2 = {};
+            >>      
+            >>      for (let val of arr1){ ----------------------> Result of the following loop :-- frequencyCounter1 = {1:1,2:2,3:1}
+            >>              frequencyCounter1[val] = (frequencyCounter1[val] || 0) + 1;
+            >>      }
+            >>      for (let val of arr2){ ----------------------> Result of the following loop :-- frequencyCounter2 = {9:1,1:1,4:2}
+            >>              frequencyCounter2[val] = (frequencyCounter2[val] || 0) + 1;
+            >>      }
+            >>      for (let key in frequencyCounter1){ ------------> Goes through every 'key' in 'frequencyCounter1'
+            >>              if (!(key ** 2 in frequencyCounter2)){--> If the square of any of the elements in [1,2,3,2] is not in the list of 'keys' of 'frequencyCounter2', it returns false.
+            >>                  return false;
+            >>              }
+            >>              if (frequencyCounter2[key ** 2] !== frequencyCounter1[key]){ --> checks if the frequencies of elements in frequencyCoutner2 is same as frequencies of elements in frequencyCoutner1
+            >>                  return false;
+            >>              }
+            >>      };
+            >>      return true;
+            >> };
+            * Time Complexity :-- O(n) --> No nested loops, only loop after loop.
+                    

@@ -1,0 +1,342 @@
+* Javascript can be usually run only inside browsers cuz they have v8 engine.
+* To run javascript on computers locally, you need to install and use NodeJS.
+* You can also mess with local files using NodeJS.
+* Reading Files :--
+     >> const fs = require('fs');
+     >> fs.readFile('data.json',(err,data)=>{
+     >>         if (err) {
+     >>             console.log(err);
+     >>                  }
+     >>         console.log(data.toString());
+     >>                                     };);
+     --> The Above code gives error if the file doesn't exist.
+
+* Writing to Files :--
+     >> const fs = require('fs');
+     >> fs.writeFile('data.json',
+     >>              '{name:"Jeman"}',
+     >>              ()=>{ console.log('File Written')}
+     >>              );
+     --> The Above code creates the specified file if there's one, and deletes whatever is in the file initially
+
+* Working with Directories :--
+     --> To Create as Folder,
+     >> fs.mkdir('./newfolder',(err)=>{
+     >>         if (err)
+     >>             {
+     >>                 console.log(err);
+     >>             }
+     >>         console.log('folder created');
+     >>                               };
+    
+     --> To Check and Then Create a Folder,
+     >> if (!fs.existsSync('./folder1')){
+     >>     fs.mkdir('./folder1',err=> {
+     >>                             if (err) {
+     >>                                 console.log(err);
+     >>                                      }
+     >>                             console.log('folder created!');
+     >>                                }
+     >>             );
+     >>                                 };
+     >> else {
+     >>     fs.rmdir('./folder1',err=>{
+     >>                             if (err) {
+     >>                                 console.log(err);
+     >>                                      };
+     >>                             console.log('Folder Deleted');
+     >>                                };
+
+
+* Creating a server and Listening to Requests and Sending Responses the OLD SCHOOL way :--
+     >> const http = require('http');
+     >> const serv = http.createServer((req,res)=>{
+     >>                     console.log('request made');
+     >>                                            }
+     >> serv.listen(3000,'localhost',()=>{console.log('Listening at 3000')});
+     
+
+     -->Recieving a simple REQUEST and sending a simple RESPONSE :--
+     >> const http = require('http');
+     >> cosnt serv = http.createServer((req,res)=>{ 
+     >>                     console.log(req.method,req.url); --> Output will be 'GET','/'
+     >>                     res.setHeaders('Content-Type","text/html");
+     >>                     res.write('<h1>Jeman</h1>');
+     >>                     res.end();
+     >>                                           };------------------------> This request is GET request sent to '/' route.
+
+     >> serv.listen(3000,'localhost',()=>{console.log('Listening at 3000')});
+
+     -->Responding with html file instead of plain text or html string :--
+     >> const http = require('http');
+     >> const fs   = require('fs');
+     >> const serv = http.createServer((req,res)=>{
+     >>                 res.setHeader('Content-Type','text/html');
+     >>                 fs.readFile('./index.html',(err,data)=>{
+     >>                         if(err){
+     >>                             console.log(err);
+     >>                             res.end();
+     >>                                 }
+     >>                         else {
+     >>                             res.write(data);
+     >>                             res.end();
+     >>                               }
+     >>                                             };
+     >> serv.listen(3000,'localhost',()=>{console.log("Listening at 3000")});
+
+     -->Routing :--
+     >> const http = require('http');
+     >> const fs   = require('fs');
+     >> const serv = http.createServer((req,res)=>{
+     >>                 res.setHeader('Content-Type','text/html');
+     >>                 let path = './views';
+     >>                 switch(req.url){
+     >>                     case '/':
+     >>                         path += 'index.html';
+     >>                         break;
+     >>                     case '/about':
+     >>                         path += 'about.html';
+     >>                         break;
+     >>                     default :
+     >>                         path += '404.html';
+     >>                         break;
+     >>                                 };
+     >>                 fs.readFile(path,(err,data) => {
+     >>                     if (err) {
+     >>                         console.log(err);
+     >>                         res.end();
+     >>                              };
+     >>                     else {
+     >>                         res.write(data);
+     >>                         res.end();  
+     >>                           };
+     >>                                          });
+     >> serv.listen(3000,'localhost',()=> { console.log('Listening at 3000')});
+
+     --> Redirecting :--
+     >> const http = require('http');
+     >> const fs   = require('fs');
+     >> const serv = http.createServer((req,res)=>{
+     >>                 res.setHeader('Content-Type','text/html');
+     >>                 let path = './views';
+     >>                 switch(req.url) {
+     >>                     case '/':
+     >>                         path += 'index.html';
+     >>                         res.statusCode = 200;
+     >>                         break;
+     >>                     case '/home':
+     >>                         res.statusCode = 301;
+     >>                         res.setHeader('Location','/');
+     >>                         res.end();
+     >>                         break;
+     >>                     default :
+     >>                         path += '404.html';
+     >>                         res.statusCode = 404;
+     >>                         break;
+     >>                                 }
+     >>                 fs.readFile(path,(err,data)=>{
+     >>                         if (err) { 
+     >>                             console.log(err);
+     >>                             res.end();
+     >>                                  }
+     >>                         else {
+     >>                             res.write(data);    
+     >>                             res.end();
+     >>                              }
+     >>                                               }
+     >>                              );
+     >>                                     
+     >>                                           };
+     >>                               )
+     >> serv.listen(3000,'localhost',()=>{console.log("Listening at 3000")});
+
+* Creating a server and Listening to Requests and Sending Responses in a NEW way :--
+     
+     * Initializing a Project :-- $ npm init
+     * Here we use 'ExpressJS' :-- $ npm install express
+     --> Creating a server :--
+     >> const exp = require('express');
+     >> const app = exp();
+     >> app.listen(3000);
+     >> app.get('/',(req,res)=> {
+     >>                     res.send('<p>Hello </p>');
+     >>                         }); ----------------------> Sending a HTML String as response.
+     >> app.get('/about',(req,res)=>{
+     >>                     res.sendFile('./about.html',{root:__dirname});
+     >>                             }); ------------------> Sending A File instead of html strings
+     >> 
+     >> app.get('/home',(req,res)=>{
+     >>                     res.redirect('/');
+     >>                             });-------------------> Redirecting to '/'
+     >> app.use((req,res)=> {
+     >>                     res.status(404).sendFile('404.html',{root:__dirname});
+     >>                     }); --------------------------> This runs when none of the above routes are invoked. The Finale Frontier
+     >>
+
+* Creating a server and listening to requests and sending Responses in another NEW way :--
+     * Using EJS [Embedded JS]
+     >> const exp = require('express');
+     >> const app = exp();  
+     >> app.set('view engine' ,'ejs'); --------------------> Setting view engine as 'EJS'. Now you can send '.ejs' files instead of 'html' files.
+     >> app.set('views','new_views_folder); ---------------> Changing the default folder from 'views' to 'new_views_folder'.
+    
+     * Creating views using EJS:-
+       * Just create files with '.ejs' extension and fill them with the html content that you want to show.
+       * Sending response with '.ejs' files :--
+         >> const app = exp();
+         >> app.get('/',(req,res) => {
+         >>                 res.render('index');
+         >>                          });
+     * Passing Dynamic Data to Views :--
+         * Ex1 :--
+            >> <body>
+            >>      <% const name = 'Jeman'%>
+            >>      <h1> My Name: </h1>
+            >>      <p> <%= name %> </p>
+            >> </body>
+        
+         * Ex2 :--
+
+            --> app.js (or) server.js :--
+            >> app.get('/',(req,res)=> {res.render('index',{ n : "Jeman"})});
+
+            --> index.ejs
+            >> <h1> My Name : <%= n %> </h1>
+
+         * Ex3 :--
+            
+            --> app.js :--
+            >> app.get('/',(req,res) => {
+            >>          const blogs = [
+            >>                          {title:'blog1',body:'body1'},
+            >>                          {title:'blog2',body:'body2'},
+            >>                          {title:'blog3',body:'body3'}
+            >>                        ]
+            >>          res.render('index',{bs : blogs});
+            >>                           });
+            
+            --> index.ejs :--
+            >> <body>
+            >>      <% if (bs.length>0) { %>
+            >>          <% bs.forEach(blog => {%>
+            >>              <h3 class='title'><%= blog.title %></h3>
+            >>              <p  class='snippet'> <%= blog.body %> </p>
+            >>          <%})%>
+            >>                      <% } %>
+            >>      <% else { %>
+            >>          <p> There's nothing to show here </p>
+            >>      <% } %>
+            >> </body>
+
+     * Partials :-- 
+        * These are partial html files that can be reused on any view file without the need to retype everything.
+        * To create a ejs partial template , create a folder 'partials'.
+        * Then go into that folder and create ejs files with that reusable content.
+        * Go to the corresponding templates & place the following line at the positions where you want to see that partial content,
+            <%- include('./partials/partial_temp.ejs')%>
+      
+     * Middleware :--
+        * Middleware is a function that has all the access to the req obj, res obj & the next middleware function in the req-res cycle.
+        * If a middleware function completes execution, the next one can be invoked with 'next()'.
+        * Ex of middleware :-- Logger Middleware, Auth Middleware, Setup route functions.......
+        * By default any of the app.get/ app.post/ app.get('/about') ...... will run every time. If those won't, then the app.use() will run.
+        * So make sure the 'app.use' function stays in the end.
+        * But, if you want 'app.use()' function to run at the top, the 'app.use()' function should have the 'next()' function inside it, so that the next middleware functions will run.
+     * Serving Static functions using middleware :--
+        * Static files like CSS/ image/ Audio/ Video can be served as follows,
+                * app.js :--
+                    >> app.use(exp.static('public_css_folder'));
+                * index.js :--
+                    >> <link rel = 'stylesheet' href = '/styles.css'/>
+                    * '/styles.css' path must be relative to 'public_css_folder'
+
+
+     * Working with MongoDB :-- 
+        * Using Atlas to create & work with db in the cloud :--
+            * Login/ Signup to atlas at 'mongodb.com/atlas/database'
+            * Create a Database cluster, then go the that cluster & create a database.
+            * Then copy the connection URL & password.
+            * We can connect to the database from your app using plain MongoDB API Package/ Mongoose.
+            * Using Mongoose :--
+                * Install mongoose with $ npm install mongoose
+                * Mongoose is an ODM Library. [Object Document Mapper]
+                * It manages relations between data, provides schema, validation & maintain translations between objs and their representation in Atlas.
+                * To Use mongoose, first create SCHEMA & MODEL :
+                    * Blog Schema :--
+                        title ----> String --> Required
+                        content --> String --> Required
+                        body -----> String --> Required
+                    * DB Model :--
+                        * Models allow us to screw with db & its collections.
+                        * A Mongoose Model has STATIC methods for all CRUD operations.
+
+                    * Creating a DB Model :--
+                        * models/blog.js :--
+                            >> const mongoose   = require('mongoose');
+                            >> const Schema     = mongoose.Schema;
+                            >> const blogSchema = new Schema({
+                            >>                          title : {
+                            >>                                    type : String,
+                            >>                                    required : true
+                            >>                                   },
+                            >>                          content : {
+                            >>                                    type : String,
+                            >>                                    required : true
+                            >>                                      }
+                            >>                                },{timestamps:true});
+                            >> const Blog = mongoose.model('Blog',blogSchema);
+                            >> module.exports = Blog;
+
+                        * app.js :--
+                            >> require('dotenv').config();
+                            >> const exp  = require('express');
+                            >> const morg = require('morgan');
+                            >> const mong = require('mongoose');
+                            >> const Blog = require('./models/blog');
+                            >> const app  = exp();
+                            >> app.set('view engine','ejs');
+                            >> app.set(exp.static('public'));
+                            >> app.use(morg('dev'));
+                            >> mong.connect(process.env.MONGURL).then(()=>{app.listen(proces.env.PORT,()=>{console.log('listening at 3000')})}).catch(err=> {console.log(err)});
+                        
+                            * GETTING ALL THE BLOGS FROM CLOUD :-
+                            >> app.get('/blogs',(req,res)=>{
+                            >>      Blog.find().then(result => {
+                            >>                  res.render('index',{blogs:result});
+                            >>                                  }).catch(err => {
+                            >>                                              console.log(err);
+                            >>                                                   });
+
+                            * CREATING A BLOG :- we create a 'blog form' with 'action' set to '/addblog' and 'method' set to 'POST'.
+                            >> app.use(express.urlencoded({extended:true}));
+                            >> app.post('/addblog',(req,res)=> {
+                            >>          const blog = new Blog (req.body);
+                            >>          blog.save().then(()=>{res.redirect('/')}).catch(err=>{console.log(err)})
+                            >>                                  };);
+        
+                            * GETTING A SPECIFIC BLOG: you can send this GET request with 'ID' by simply turning the blog title to 'anchor' tag an setting it's href to '/blogs/<%=blog._id%>'
+                            >> app.get('/blogs/:id',(req,res)=>{
+                            >>          const id = req.params.id;
+                            >>          Blog.findById(id)
+                            >>                                 }).then(result=>{
+                            >>                                          res.render('details',{blog:result})
+                            >>                                                  }).catch(err=>{
+                            >>                                                          console.log(err);
+                            >>                                                          });
+                            
+                            * DELETING A BLOG : you can send this DELETE request with 'ID' by simply turning the blog title to 'anchor' tag an setting it's href to '/blogs/<%=blog._id%>'
+                            >> app.delete('/blog/:id',(req,res)=>{
+                            >>          const id = req.params.id;
+                            >>          Blog.findByIdAndDelete(id)
+                            >>                                   }).then(result=>{
+                            >>                                              res.json({redirect:'/blogs'});
+                            >>                                                    }).catch(err=>{
+                            >>                                                          console.log(err);
+                            >>                                                                   });
+                           
+
+
+
+
+
+

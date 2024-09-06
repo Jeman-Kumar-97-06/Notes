@@ -1,0 +1,34 @@
+* sysadmin : -- System Administrator
+* Terminal : -- It's a crucial part of any Linux System because it basically allows you to access system through a shell.
+* Shell    : -- A shell is a program that takes commands from the user and gives them to the operating system's kernel to execute. It's also called the command interpreter. The shell gets started when the user logs in or starts the terminal
+# Linux is a case-sensitive OS.
+
+* Shortcut to open terminal :-- CTRL + ALT + T
+
+#LEARN TERMINAL VS SHELL
+#Terminal :--
+    * A Terminal is an interface that lets you access the cmd line on a computer.
+    * A Terminal may refer to a group of hardware devices comprising a keyboard and monitor. It enables
+      users to communicate with the internal cpu or another network device or computer. It's purpose is to
+      accept input, transmit that input to another (maybe remote) processing device, receive the output and display it.
+    * A Dumb Terminal has no internal cpu of it's own.
+#Shell :--
+    * The shell is the program which actually processes commands that is typed into the terminal and returns output.
+      Most shells also manages foreground and background processes, command history and cmd line editing. These 
+      features are standard in bash.
+#Console :--
+    * The console is a special sort of terminal. 
+    * Historically, the console was a single keyboard and monitor plugged into a dedicated serial console port on a 
+      computer used for direct communication at low level with the OS.
+    * Modern linux systems provide virtual consoles. These can be accessed throudh key combinations CTRL + ALT + F1
+#TYPES OF SHELL :--
+#Bash :--
+    * Bourne-Again SHell is a shell program and command language supported by Free Software Foundation and first 
+      developed for the GNU Project by Brian Fox.
+#C Shell :--
+    * \
+
+
+##TERMINAL COMMANDS##
+* List of files : -- $ ls
+* 

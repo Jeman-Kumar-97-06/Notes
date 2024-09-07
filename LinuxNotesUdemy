@@ -1,7 +1,18 @@
 * sysadmin : -- System Administrator
 * Terminal : -- It's a crucial part of any Linux System because it basically allows you to access system through a shell.
 * Shell    : -- A shell is a program that takes commands from the user and gives them to the operating system's kernel to execute. It's also called the command interpreter. The shell gets started when the user logs in or starts the terminal
-# Linux is a case-sensitive OS.
+# Linux is a case-sensitive OS.         
+# Linux Family List :--                                            |-------> Cent OS
+    1. Red Had Family Systems --> Fedora ------------------------> |
+    2. SUSE Family Systems------> SLEC, openSUSE                   |-------> Oracle Linux
+    3. Debian Family Systems ---> Linux Mint, Ubuntu
+# RHEL :-- 
+    * Red Hat Enterprise Linux.
+    * Fedora is used an an upstream testing platform.
+    * CentOS is the close clone of RHEL
+    * Supported by Intelx86, ARM, Itanium, PowerPC.
+    * Uses 'yum' package manager.
+    * Used by companies that host their own system.
 
 * Shortcut to open terminal :-- CTRL + ALT + T
 

@@ -1,0 +1,15 @@
+How Computers Represent Data ?
+    * Pics/ Videos and Other Data are just '0's and '1's for a computer.
+    * 
+
+Computer Networking :--
+    * Methods through which Information is exchanged between Computers.
+    * A Computer Network is a set of computing devices connected through links.
+    * A Node is a computer/printer/any other device capable of sending and recieving data.
+    * The Links Connecting those Nodes are called Communication Channels.
+    * Distributed Processing / Distributed Computing :-- Type of Computing where a task/ process is divided among several Computers.
+    * Advantages of Distributed Processing :--
+        * Security :--  It provides limited interaction that a user can have with the entire system.
+                        For Example :-- A bank allows the users to access their own accounts through an ATM without allowing them to access the banks entire DB.
+        * Faster Problem Solving :-- Single system working alone vs Multiple computers working together.
+        * Security through redundancy :-- Example :- If 4 Computers run the same program and any computer has hardware error/ breach, then other computers can rectify it.

@@ -1,0 +1,7 @@
+1. Create a 'userRoutes.js' route handler file.
+2. Inside 'userRoutes.js' file create 2 route handlers,
+    1. router.post('/login', loginUser);
+    2. router.post('/signup', signupUser);
+3. Create loginUser & signupUser controller functions.
+    1. userController/loginUser function :
+    2. userController/signupUser function :

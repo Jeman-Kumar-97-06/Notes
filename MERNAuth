@@ -4,4 +4,32 @@
     2. router.post('/signup', signupUser);
 3. Create loginUser & signupUser controller functions.
     1. userController/loginUser function :
+        1. We De-Structure the request body to get {email,password}.
+        2. we Login the user with his/hers email and password by using a 'userSchema.statics.login' method that we define on our own.
+            'userSchema.statics.login' function :--
+                1. Check if the email and password fields are filled.
+                2. Check if we can find a user with the matching Email.
+                3. If found, see if the password is correct.
+                4. If correct, return the user.
+        3. After we recieve the user, create JWT with user _id
+        4. After this we send response with status code 200 and response data : {email,token}
+
     2. userController/signupUser function :
+        1. We De-Structure the request body to get {email,password}.
+        2. We signup the user with his/hers email and password by using a 'userSchema.statics.signup' method that we defined on our own.
+            'userSchema.statics.signup' function :--
+                1. Check if email and password fields are filled.
+                2. Validate email and password with 'validator' package.
+                3. Check if email is already in use.
+                4. create a SALT to concatenate with password string.
+                5. Then user the password+SALT to create a 'HASH' using the module 'bcrypt'
+                6. Now user the 'create' method to signup the user with email and password sent as {email,password:hash}.
+                7. finally return the signed-up user object.
+        3. After we get the signed-up user object, create a JWT token using 'jsonwebtoken' package.
+        4. After this we send response with status code 200 and response data : {email,token}
+
+4. Now we have to create ways to send login/logout/signup requests from react frontend app. Before that, we have to create a way for react app to keep track
+   of authentication state [that keeps track of whether any user is signed in / signed up /logged out] globally.
+    1. Create a 'context/AuthContext.js' file.
+    2. Create a 'useAuthContext.js' file to consume 'AuthContext'.
+    

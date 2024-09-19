@@ -32,4 +32,34 @@
    of authentication state [that keeps track of whether any user is signed in / signed up /logged out] globally.
     1. Create a 'context/AuthContext.js' file.
     2. Create a 'useAuthContext.js' file to consume 'AuthContext'.
+    3. Create a Signup.js page with a 'signup' form to input email and password.
+    4. Create a Login.js page with a 'login' form to input email and password.
+    5. Add Route Paths and Links to Navbar.
+
+5. Now after doing that, we need to create ways to send login/logout/signup request from react frontend app.
+    1. Create a custom hook 'useSignup.js'.
+    2. This hook handles the functionality of returning a 'signup' function, 'error' if any, 'isloading' state.
+        'signup' function :
+            1. This function will send a post request to '/api/users/signup' with {email,password}.
+            2. If the request made to backend is successful and the backend returns {email,token}, we will stringify it and store in localStorage.
+            3. We then update the auth state globally with sending 'LOGIN' dispatch action.
+            # [ AS SOON AS YOU REFRESH THE WEBSITE, THE AUTH STATE WILL AGAIN RESET AND UNDO THE 'LOGIN' ACTION. BUT THE {EMAIL,TOKEN} WILL STILL BE IN LOCALSTORAGE ]
+            # [ THUS WE SHOULD CHECK BEFOREHAND TO MAKE SURE IF THER'S ANY LOGGED IN USER'S {EMAIL,TOKEN} INSIDE LOCALSTORAGE AND SET AUTH STATE TO THE LOGGED IN USER ]
+    3. Create a custom hook 'useLogin.js'.
+    4. This hook does the same thing as as 'useSignup' hook.
+    5. Create a custom hook 'useLogout.js'.
+    6. This returns a function 'logout' that just deletes the user object from 'localStorage'
+
+6. Checking if there's a user logged in / user object is stored in localStorage and setting the initial Auth status.
+    1. Write a conditional statement in "Navbar" to render 'login' and 'signup' options when no user is logged in and render 'logout' and 'user email/name' when a user is 
+       logged in.
+    2. Now go to 'AuthContext.js' and inside 'AuthContextProvider' function, create a useEffect hook that runs a function everytime the site loads [empty dependency array].
+       This function inside 'userEffect' should check if there's any user stored inside 'localStorage'. If any user object is inside the localStorage, a dispatch action of 
+       type 'LOGIN' should be sent with the 'user' object found in 'localStorage' as payload.
+7. 
+
+
+
+
+
     

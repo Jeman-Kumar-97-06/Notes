@@ -56,10 +56,37 @@
     2. Now go to 'AuthContext.js' and inside 'AuthContextProvider' function, create a useEffect hook that runs a function everytime the site loads [empty dependency array].
        This function inside 'userEffect' should check if there's any user stored inside 'localStorage'. If any user object is inside the localStorage, a dispatch action of 
        type 'LOGIN' should be sent with the 'user' object found in 'localStorage' as payload.
-7. 
+7. Protecting API Routes ie., all the data that is fetched shouldn't be accessible to users when they are logged out.
+    1. For this, we go back to backend/routes/userRoutes.js and place a route middleware above all other routes inside 'NoteRoutes'.
+    2. This middleware will check if the GET/POST requests that are sent by clientside has a 'JWT' with them.
+    3. This middleware is defined inside a new file /backend/middleware/requireAuth.js.
+        'requireAuth.js':
+            1. We check if the req HEADERS has a 'Bearer Token' [JWT] in it.
+            2. We send the header as a string : 'Bearer alskfalsdkfTHISISTOKENYOlaksdfj'
+            3. We take the second part of it [JWT] and check if it's valid and extract user _id from the token.
+            4. we search for the user with that id. If found, we attach the _id to the request BODY. Then we run 'next()'
+            5. since we import 'requireAuth' to 'noteRoutes' and place it above all the routes.
+            6. after the 'requireAuth' is run, the next routes will run. These next routes will recieve the 'req' argument with 'user' key with '_id' as value.
 
+8. We created functionality to lock down API routes unless backend recieves requests with 'Bearer Token' as header. Now we see how to send a 'Bearer Token' from clientside.
+   [If we don't, the app will crash]    
+    1. We search for code blocks in frontend code that send a request to backend and add a 'Bearer Token' to each of them.
+    2. Also if Possible add an if conditions so that the frontend code sends requests to backend only if there's a user logged in, to begin with.
 
+9. Now we have to make sure to redirect to 'login' / 'signup' page as soon as the users log out. Also if there's a user logged in [ie., localStorage has {email,token}], we 
+   need to redirect to home page.
+    1. Go to app.js where we placed 'BrowserRouter', and use 'Navigate' to conditionally render pages.
+        Ex : <Route exact path = '/' element = {user ? <Home/> : <Navigate to = '/login' /> }/>
 
-
+10. Finally We render user specific data : [User logged in should only see his data]
+    1. We know that requireAuth attaches a new key-value pair to req body. ['user' as key and '_id' as its value]
+    2. We take that and add to the data body we send via 'createNote' controller to create a note in MONGODB.
+    3. We update the note-model such that, it receives 'title','body',and 'user_id'
+    4. When 'getNotes' is invoked, we use that 'user_id' from 'req body' to filter his/her notes.
+    5. Now we can see the user specific notes. Buy as soon as a user logs out of the site, and another user logs in, you can see the previous user's data for a split second.
+       This is becoz, when another user logs in, the old user object is replaced by the new user object inside 'AuthContext' but the global state of 'NOTES' is not replaced.
+       The new user's notes is just rendered upon the old user's 'NOTES'.
+    6. To solve this, we go to 'useLogout.js' and inside 'logout' function, along with deleting the data in localStorage and dispatching 'LOGOUT' action to reducer function
+       inside 'AuthContext', we are also going to dispatch 'SET_NOTES' action with 'payload:null' to the reducer function inside 'NotesContext'.
 
     

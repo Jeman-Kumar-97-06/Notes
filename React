@@ -497,7 +497,8 @@
 
             * In the above figure if you want to send a prop to 'NavCom2.js', you first send it from 'App.js' to Navbar.js, then from there to 'NavCom2.js'
             * But by using 'useContext' api, you can make that prop available to all the components from 'App.js' to 'NavbarCom2.js'.
-            * using ContextAPI we create a context in a seperate file. We provide it to component tree so that they can access & get the data.We then wrap the 'contextprovider' tag around the components that wants to access this state.
+            * using ContextAPI we create a context in a seperate file. We provide it to component tree so that they can access & get the data.
+              We then wrap the 'contextprovider' tag around the components that wants to access this state.
     * Creating a Context file :--
         * Create /src/contexts/ThemeContext.js :--
             >> import {createContext} from 'react';

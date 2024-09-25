@@ -1,0 +1,44 @@
+Modules :--
+    * A Module is a piece of code in a file that you can 
+    call and use from other files.
+    * A modular design is the opposite of having all your
+    project's code in one single file.
+    * Advantages:
+        * Dividing Concerns and Features into different
+        files will be easy to manage.
+        * Easy to maitain and less prone to errors.
+        * Modules can be easily used and reused in different
+        files and parts of out project, without needing to
+        rewrite the same code again.
+Common JS :--
+     * An old set of standards used to implement modules on
+     JS. The Project was started by Mozilla engineer Kevin
+     Dangoor in 2009
+      * Common JS is mainly used in server-side JS apps with
+     NodeJS as Browsers don't support the use of CommonJS.
+      * Example :--
+            * main.js:
+                >> mod1Func = require('./mod1.js');
+                >> const testFunction = () => {
+                >>      console.log("I'm the main function");
+                >> }
+
+            * mod1.js:
+                >> const mod1Func = () => {console.log('hi')}
+                >> const mod2Func = () => {console.log('yo')}
+                >> module.exports = {mod1Func,mod2Func};
+                 #or if you want to export single func
+                >> module.exports = mod1Func;
+ESModules:--
+        * This allowed JS modules to work on client browsers and servers
+        * Example :--
+            * package.json:--
+                {
+                    ---------------
+                    "type":"module"
+                 }
+            # Adding the above 'type' key with 'module' value, will make
+            the webpack bundle the code in ES Standard. Now you should
+            only use 'import' instead of 'require'
+        * See import_export.txt for info
+        

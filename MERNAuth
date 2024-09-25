@@ -57,7 +57,7 @@
        This function inside 'userEffect' should check if there's any user stored inside 'localStorage'. If any user object is inside the localStorage, a dispatch action of 
        type 'LOGIN' should be sent with the 'user' object found in 'localStorage' as payload.
 7. Protecting API Routes ie., all the data that is fetched shouldn't be accessible to users when they are logged out.
-    1. For this, we go back to backend/routes/userRoutes.js and place a route middleware above all other routes inside 'NoteRoutes'.
+    1. For this, we go back to backend/routes/NoteRoutes.js and place a route middleware above all other routes inside 'NoteRoutes'.
     2. This middleware will check if the GET/POST requests that are sent by clientside has a 'JWT' with them.
     3. This middleware is defined inside a new file /backend/middleware/requireAuth.js.
         'requireAuth.js':

@@ -1,0 +1,50 @@
+* Starting a mongo DB server:--
+    $ sudo service mongod start
+* Re-Starting a mongo DB server:--
+    $ sudo service mongod restart
+* Mongosh :-- Mongo Shell:--
+    * Show the current selected database:
+        > db
+    * Show the list of databases:
+        > show dbs
+    * Select a different database from the list of databases:
+        > use dbname
+    * Show collections in the selected database:
+        > show collections
+
+    # CRUD:
+    # CREATE:
+    * Inserting a single Document:
+        > db.collectionname.insertOne({key1:"value1",key2:"value2".....});
+    * Inserting many documents:
+        > db.collectionname.insertMany([ {key1:'val1',key2:'val2'...}, {key1:'v1',key2:'v2'...} ])
+    
+    # READ:
+    * Find all documents in a collection:
+        > db.collectionname.find()
+    * Mongo Projection:
+        * Find one doc with matching query:
+            > db.collectionname.findOne({name:"Jeman"})
+    * Mongo Operators:
+        > db.collectionname.findOne({name:{$eq:"Jeman"}) --> Equivalent to the example above
+        > db.collectionname.findOne({price:{$gt:100}) -----> All docs with price greater than 100 [u can also use dates]
+        * Other Ops:--
+            [$gte, $lt, $lte, $ne, $in, $nin]
+        * Logical Ops:--
+            [$and,$or,$not,$nor]
+        
+    # UPDATE:
+    * Update one document in a collection:
+        * We use updateOne() for this
+        * This takes 2 args:
+            1. Arg to identify the doc
+            2. Arg to make changes to the doc
+            > db.collectionname.updateOne({title:"Jeman"},{$set:{age:27}})
+
+    # DELETE:
+    * Delete one doc in a collection:
+        > db.collectionname.deleteOne({title:'jeman'})
+    * Delete many docs :
+        > db.collectionname.deleteMany({age:3})
+
+    

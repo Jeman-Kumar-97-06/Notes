@@ -1,5 +1,30 @@
 What is a Markup Language ?
-    * A markup language is a text-encoding system which specifies the structure and formatting of a document and potentially the 
-    relationships among its parts.
+    * A markup language is a text-encoding system which specifies 
+     the structure and formatting of a document and potentially the
+     relationships among its parts.
     
-What is 
+What is MERN Stack?
+    * MongoDB, ExpressJS, React, NodeJS
+
+Who is a MERN Stack Developer?
+    * A Mern stack dev is a professional who is proficient in
+    building web apps using Mongo, Express, React, NodeJS
+
+What is MONGODB:--
+    * Mongo DB is a no-sql database.
+    * SQL uses databases made of Tables with predefined
+    relationships between them
+    * MongodDb used doc-based data model where data is stored in 
+    JSON like docs with dynamic schemas.
+    * These docs make up a collection and a num of collections make
+    a database
+
+What is Express JS :--
+    * Express is a backend-routing framework.
+    * It works on top of Node.JS server functionality to simplify
+    its APIs and add helpful features
+
+What is ReactJS:==
+    * React is a frontend framework used to create single page 
+    web-apps. 
+    * It's goal is to create 

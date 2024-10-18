@@ -37,4 +37,10 @@ Git Commit :--
         $ git commit -m "<commit message>"
 
 Git push :-- 
-
+    * Pushing updated code or project files to remote repo.
+        * Pushing for the first time by adding a remote url to the local project:
+            $ git remote add origin <repo url>
+            $ git branch -M main
+            $ git push -u origin main
+        * After that, just use
+            $ git push -u origin main 

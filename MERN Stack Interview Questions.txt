@@ -1,3 +1,21 @@
+CSS:--
+What are pseudo classes ?
+    * CSS Pseudo classes are keywords that are added to selectors to specify the state or behaviour of an element.
+
+How Pseudo classes work ?
+    * Pseudo classes allow you to style elements based on their state or position in the document tree. 
+        For Example pseudo class ":hover" can be used to select a button when the user's pointer hovers over it.
+        More Examples :-- :hover :active :first-child :nth-child
+    * Pseudo classes are always preceded by a colon (:)
+
+What are Pseudo Elements ?
+    * A CSS Pseudo Element is used to style a specific part of element. Like first line of a paragraph, First letter of a sentence,
+     Inserting content before an element, style the markers of list items, and style view box behind a dialog box.
+    * All Pseudo Elements are always preceded by a double colon (::)
+
+What are CSS Function ?
+    * CSS value functions are statements that invoke special data processing or calculations to return CSS Value for a css property.
+
 What is a Markup Language ?
     * A markup language is a text-encoding system which specifies 
      the structure and formatting of a document and potentially the

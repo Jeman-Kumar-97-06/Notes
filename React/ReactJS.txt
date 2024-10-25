@@ -256,7 +256,7 @@
         >> import {useState,useEffect} from 'react';
         >> import BlogList from './BlogList';
         >> const Home = () => {
-   LineX>>         const [blogs,setBlogs] = useState(null);
+   LineX>>          const [blogs,setBlogs] = useState(null);
         >>          const [isPending,setIsPending] = useState(true);
         >>          const [error,setError] = useState(null);
         >>          useEffect(()=>{
@@ -341,6 +341,7 @@
         >> import BlogDetails from './BlogDetails';
         >> function App () {
         >>      return (
+        >>         <BrowserRouter>
         >>          <Router>
         >>              <Routes>
         >>                  <Route exact path='/' element={<Home/>}/>
@@ -348,6 +349,7 @@
         >>                  <Route exact path='/blogs/:id' element={<BlogDetails/>}/>
         >>              </Routes>
         >>          </Router>
+        >>         </BrowserRouter>
         >>              )
         >>                  }
         >> export default App();

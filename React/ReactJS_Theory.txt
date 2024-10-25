@@ -1,3 +1,62 @@
 React JS :--
-    * A Frontend JS framework used to create single page apps.
-    
+    * A Frontend Open Source Framework which is used to develop user interfaces specifically for applications with single page.
+    * Different content is rendered on that single page page dynamically according to User/Clients Requests.
+
+React Project Setup :--
+    /app_root_folder/
+        /node_modules/
+        /public/
+            /favicon.ico
+            /index.html -------> Acts as the entry point of the web app. Has the foundational HTML structure where all content is 
+            /manifest.json       dynamically rendered
+            /logo192.png
+            /logo512.png
+        /src/ -----------------> Means Source Files Folder
+            /App.css ----------> Css for App.js Component
+            /App.js -----------> A basic react component
+            /AppTest.js
+            /index.css --------> Css for index.js component
+            /index.js ---------> Contains js code to render components like 'App.js' into index.html
+            /logo.svg
+            /reportWebVitals.js -> Contains code to measure performace metrics and capture user experience
+            /SetupTests.js -----> Used to run tests on the web app
+        /.gitignore
+        /package.json ----------> Contains all react npm scripts, list of dependencies installed in 'node_modules'
+
+React Components :--
+    * React components are re-usable,independent pieces of code that define specific parts of a UI.
+    * Each Component has it own JS Logic to render content on different parts of the UI.
+    * Each Component has Phases in it lifecycle from creation to removal from DOM.
+    * Two Types of Components :--
+        Functional Componenets :--
+            Example :-- 
+                src/components/Comp1.js :--
+                    >> export default function Comp1() {
+                    >>      return (
+                    >>          <div>
+                    >>              <h1>This is Comp1</h1>
+                    >>          </div>
+                    >>              )
+                    >>                                 }
+
+            Function Component Life Cycle :--
+                * Mounting :-- In mounting phase, a func comp is created and added to DOM. In this phase, you intialize state and 
+                render the comp for the first time.
+                               Usually useState can be used to intialize state and useEffect with empty dependency array to run some
+                code for the first time when the DOM renders.
+                * Updating :-- In this phase, a func comp is re-rendered on to the DOM when there's a change in props or state vars.
+                               You can use useState to update state vars and useEffect with non-empty dependency array to re-render the
+                component when prop/state vars inside the dependency array is updated.
+                * Un-Mounting :-- In this pase, the comp in being removes from the DOM. A cleanup func inside useEffect hooks can do it.
+                                  By returning a function with cleanup code from 'useEffect' hook you can perform un-mounting.
+
+        Class Components :--
+            Example :--
+                src/index.js:--
+                    >> class Comp2 extends React.Component {
+                    >>      render () {
+                    >>          return <h1>This is Comp2</h1>
+                    >>                }
+                # inside 'index.js' file , write root.render(<Comp/>);
+            Class Component Life Cycle :--
+                * Mounting :-- 

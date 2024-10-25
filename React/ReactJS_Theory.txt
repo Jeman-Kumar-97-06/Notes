@@ -60,3 +60,8 @@ React Components :--
                 # inside 'index.js' file , write root.render(<Comp/>);
             Class Component Life Cycle :--
                 * Mounting :-- 
+    * It's better to use Fucntional components than Class componenets.
+    * Dynamic Content is Rendered on to Components by sending them props. You can destructure them and place each at where ever you want
+     on the UI with "{}" brackets wrapping them.
+    * Handling Events :--
+         

@@ -124,4 +124,50 @@ Props :--
 
 State :--
     * React Components has a built-in state object.
+    * The State object is where you store the property values that belong to the component.
+    * When the State object changes , the component re-renders.
+    * State can be set/changed with 'useState' HOOK.
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+Props vs State :--
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+React Conditional Rendering :--
+    * To Conditionally render a component you can use 'if' conditions.
+        # Comp1:--
+        >> function MissedGoal(){
+        >>      return <h1>MISSED :( </h1>
+        >>                      }
+
+        # Comp2:--
+        >> function MadeGoal(){
+        >>      return <h1> GOAL :) </h1>
+        >>                    }
+
+        >> function Goal(props){
+        >>      const isGoal = props.isGoal;
+        >>      if (isGoal) {
+        >>          return <MadeGoal/>
+        >>                  }
+        >>      return <MissedGoal/>
+        >>                      }
+        
+        >> root.render(<Goal isGoal = {false}/>);
+
+    * You can also use Logical Operator && :--
+        >> { cars.length > 2 && <h1>You have more than 2 cars</h1> }
+
+    * You can also use Ternary Operators :--
+        >> function Goal(props){
+        >>      const isGoal = props.isGoal;
+        >>      return (
+        >>          <div>
+        >>              {isGoal ? <MadeGoal/> : <MissedGoal/>}
+        >>          </div>
+        >>              )
+        >>                      };
+        >> root.render(<Goal isGoal = {false} />};
+
     * 

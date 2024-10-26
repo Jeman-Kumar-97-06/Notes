@@ -2,6 +2,8 @@ React JS :--
     * A Frontend Open Source Framework which is used to develop user interfaces specifically for applications with single page.
     * Different content is rendered on that single page page dynamically according to User/Clients Requests.
 
+---------------------------------------------------------------------------------------------------------------------------------------------
+
 React Project Setup :--
     /app_root_folder/
         /node_modules/
@@ -22,6 +24,8 @@ React Project Setup :--
             /SetupTests.js -----> Used to run tests on the web app
         /.gitignore
         /package.json ----------> Contains all react npm scripts, list of dependencies installed in 'node_modules'
+
+---------------------------------------------------------------------------------------------------------------------------------------------
 
 React Components :--
     * React components are re-usable,independent pieces of code that define specific parts of a UI.
@@ -61,7 +65,63 @@ React Components :--
             Class Component Life Cycle :--
                 * Mounting :-- 
     * It's better to use Fucntional components than Class componenets.
-    * Dynamic Content is Rendered on to Components by sending them props. You can destructure them and place each at where ever you want
-     on the UI with "{}" brackets wrapping them.
-    * Handling Events :--
-         
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+JSX:--
+    * Rendering HTML without JSX:--
+            ______FILL THIS______
+    * Rendering with JSX:--
+        >> const myElem = <h1>I Love JSX</h1>
+        >> const root   = ReactDOM.createRoot(document.getElementById("root"));
+        >> root.render(myElem);
+    * Expressions in JSX :--
+        >> const name   = 'jeman'
+        >> const myElem = <h1> My name is {name} and i am {5+5} years old</h1>
+        >> const root   = ReactDOM.createRoot(document.getElementById('root'));
+        >> root.render(myElem);
+    * Unlike the above example if the element has HTML with multiple tags, they all must be wrapped in one top level element.
+    * All tags inside JSX HTML must be properly closed.    
+    * Since 'class' keyword is reserved for OOPs in JS, 'className' is used as attribute name in JSX
+    * Don't use 'if' conditions inside JSX. Use it outside. Otherwise use 'ternary' operators inside JSX '{}' brackets.
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+React Events :--
+    * Create a button or anchor tag with a html event in it. 
+        >> <button onClick = {func1}> Click Me </button> --> func1 says what to do when you click 'Click Me'.
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Props :--
+    * 'props' for 'Properties'
+    * Props are arguments passed into React components.
+    * Props are passed to components via HTML attributes.
+    * Example :-- >> const myElem = <Car brand='Ford' />
+                  /Car.js :--
+                  >> function Car(props){
+                  >>    return <h1>I am {props.brand}</h1>
+                  >>                    }
+    * Sending Props from one component to another.
+        Example :--
+                  >> function Car(props) {
+                  >>    return <h1>I am {props.brand}</h1>
+                  >>                     }
+               
+                  >> function Garage() {
+                  >>    const company = 'Ford';
+                  >>    return (
+                  >>        <div>
+                  >>            <h1>Hi !</h1>
+                  >>            <Car brand={company}/>
+                  >>        </div>
+                  >>            )
+                  >>                   }
+                  >> const root = ReactDOM.createRoot(document.querySelector('#root'));
+                  >> root.render(<Garage/>);
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+State :--
+    * React Components has a built-in state object.
+    * 

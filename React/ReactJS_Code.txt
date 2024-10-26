@@ -1,5 +1,8 @@
 * A Frontend Open Source Framework which is used to develop user interfaces specifically for applications with single page.
 * Different content is rendered on that single page dynamically.
+
+--------------------------------------------------------------------------------------------------------------------------------
+
 * Setup :--
     * Install node.
     * Then run $ npm install react
@@ -8,6 +11,9 @@
                           Then search for 'Emmet:Include Languages'.
                           Add item 'javascript' and set it to 'javascriptreact'.
                           These Instructions help in creating react components with html easily.
+
+--------------------------------------------------------------------------------------------------------------------------------
+
 * Creating React App :--
     * Run $ npx create-react-app blogx 
     * App Structure :--
@@ -31,8 +37,12 @@
             .gitignore
             package.json
 
+----------------------------------------------------------------------------------------------------------------------------------
+
 * Starting a React app :--
     * Run '$ npm run start' in react root folder.
+
+----------------------------------------------------------------------------------------------------------------------------------
 
 * src/index.js :--
     * The Main 'App' component is imported and rendered here, in this file.
@@ -47,6 +57,8 @@
         >>          <App/>
         >>      </React.StrictMode>
         >>             )
+
+----------------------------------------------------------------------------------------------------------------------------------
 
 * Components :--
     * Building Blocks of React App.
@@ -92,6 +104,9 @@
             >>      <p style={{color:'blue',borderRadius:'5px'}}> Hi World! </p>
             >>          );
         
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
 * Handling Click Events :--
     * src/Home.js :--
          >> const Home = () => {
@@ -115,6 +130,9 @@
          >>                 );
          >>                     };
          >> export default Home;
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
 * Props :-- 
     * Also called as React Component Properties.
     * Props are passed into React Components.
@@ -139,6 +157,8 @@
         >>              )
         >>                     };
         >> export default Home;
+
+----------------------------------------------------------------------------------------------------------------------------------
 
 * Functions as Props :--
     * BlogList.js :--
@@ -178,6 +198,8 @@
         >>              )
         >>                    };  
 
+-----------------------------------------------------------------------------------------------------------------------------------
+
 
 * 'useState' Hook :--
     * Used to set/change state variables.
@@ -195,6 +217,9 @@
         >>              );
         >>                      };
         >>  export default Example;
+
+----------------------------------------------------------------------------------------------------------------------------------
+
 
 * 'useEffect' Hook :--
     * 'useEffect' takes a function and a dependency array as arguments.
@@ -221,6 +246,9 @@
         >>              );
         >>                  };
         >> export default Home;
+
+------------------------------------------------------------------------------------------------------------------------------------
+
 
 * Doing CRUD Operations with React on a Database using a backend server created with NPM JSON Server:-
     * First execute $ npm install json-server
@@ -251,6 +279,9 @@
     * Run the following command to create a server based on this json file:-
         $ npx json-server --watch data/db.json --port 8000
     * The above server can be screwed with at 'http://localhost:8000'.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
 * Fetching Data from the above 'JSON-Server':--
     * Home.js :--
         >> import {useState,useEffect} from 'react';
@@ -288,7 +319,10 @@
         >>                  );
         >>                      };
 
-* The Whole Logic to fetch data that includes code lines from 'LineX' to 'LineY' can be put in another file and used as a custom hook in this file as a single line.
+---------------------------------------------------------------------------------------------------------------------------------------
+
+* The Whole Logic to fetch data that includes code lines from 'LineX' to 'LineY' can be put in another file and used as a custom hook
+   in this file as a single line.
     * Create a custom hook :-- /customhooks/useFetch.js :--
         >> import {useState,useEffect} from 'react';
         >> const useFetch = () => {
@@ -330,10 +364,13 @@
         >>                  )
         >>                      };
         >> export default Home;
-    
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
 * React-Router :--
     * Install with $ npm install react-router-dom
-    * Usually in Vanilla_JS if you go to '/' path in any web app, a GET req will be sent to the server. If you redirect to '/create', a GET request will be again sent to server.
+    * Usually in Vanilla_JS if you go to '/' path in any web app, a GET req will be sent to the server. 
+      If you redirect to '/create', a GET request will be again sent to server.
     * App.js :-
         >> import Home from './Home';
         >> import {BrowserRouter,Route,Routes} from 'react-router-dom';
@@ -389,6 +426,8 @@
         >>                             };
         >> export default BlogDetails;
         
+-------------------------------------------------------------------------------------------------------------------------------------------
+
 * Controlled Inputs in forms & submitting data :--
     * Create.js :--
         >> import {useState} from 'react';
@@ -434,6 +473,8 @@
         >>                        };
         >> export default Create;
 
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
 * Deleting a Blog :--
     * BlogDetails.js :--
         >> import {useParams,useNavigate} from 'react-router-dom';
@@ -461,6 +502,8 @@
         >>                            };
         >> export default BlogDetails;
         
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
 * Adding a 404 page :--
     * Create component 'NotFound.js'
     * NotFound.js :--
@@ -478,7 +521,10 @@
     * App.js :-- Add the following path in the end, after all routes.
         >>  <Route path='*' element={<NotFound/>}/>
 
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
 * useContext: --
+
     * useContext hook:--
         * Context API :--
             * This is used to share 'state' all over the app efficiently.
@@ -497,11 +543,14 @@
         v                v
      NavbarCom1.js      NavbarCom2.js
 
-            * In the above figure if you want to send a prop to 'NavCom2.js', you first send it from 'App.js' to Navbar.js, then from there to 'NavCom2.js'
+            * In the above figure if you want to send a prop to 'NavCom2.js', you first send it from 'App.js' to Navbar.js, then from there to 
+              'NavCom2.js'
             * But by using 'useContext' api, you can make that prop available to all the components from 'App.js' to 'NavbarCom2.js'.
             * using ContextAPI we create a context in a seperate file. We provide it to component tree so that they can access & get the data.
               We then wrap the 'contextprovider' tag around the components that wants to access this state.
+
     * Creating a Context file :--
+
         * Create /src/contexts/ThemeContext.js :--
             >> import {createContext} from 'react';
             >> export const ThemeContext = createContex();
@@ -518,6 +567,7 @@
             >>              </ThemeContext.Provider>
             >>                  );
             >>              }:
+
        * Making required components use the context and its state values in App.js :--
             >> import ThemeContextProvider from './contexts/ThemeContext';
             >> function App() {
@@ -533,6 +583,7 @@
             >> export default App;
 
     * Accessing Context :--
+
         * src/components/Navbar.js :--
             >> import {Component} from 'react';
             >> import {ThemeContext} from './contexts/ThemeContext';
@@ -554,7 +605,9 @@
             >>              };
             >>                                  };
             >> export default Navbar;
+
     * Updating the Context Data :--
+
         * Add the following function inside 'src/contexts/ThemeContext.js' file,inside the class 'ThemeContextProvider':-
             >> toggleTheme = () => {
             >>      this.setState({isLightTheme : !this.state.isLightTheme});
@@ -577,8 +630,11 @@
             >>               };
             >>                                      };
             >> export defualt ToggleTheme;
+
         * Now add '<ToggleTheme/>' inside '<ThemeContextProvider>' tags alongside '<Navbar/>' and '<BlogList/>'.
+
     * Creating multiple contexts :--
+
         * Create 'src/contexts/AuthContext.js':-
             >> import {Component,createContext} from 'react';
             >> export const AuthContext = createContext();
@@ -594,6 +650,6 @@
             >>              <AuthContext.Provider value={{...this.state,toggA:this.toggleAuth}}>
             >>
 
-
+---------------------------------------------------------------------------------------------------------------------------------------
 
 

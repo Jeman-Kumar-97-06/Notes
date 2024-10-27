@@ -90,6 +90,8 @@ JSX:--
 React Events :--
     * Create a button or anchor tag with a html event in it. 
         >> <button onClick = {func1}> Click Me </button> --> func1 says what to do when you click 'Click Me'.
+    * Each event handler has an argument by default, 'e'. This gives us access to the DOM element that triggered the event.
+    * 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -170,4 +172,37 @@ React Conditional Rendering :--
         >>                      };
         >> root.render(<Goal isGoal = {false} />};
 
-    * 
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+React Hooks :--
+    * React hooks are functions that let you use different React features from functional components .
+    * Hooks allow functional components to have access to state and other React features.
+    # Hooks are a main reason class components are generally no longer used.
+    * useState :--
+        * The react useState hook allows use to add and track state variables in funtional components.
+        * Every time a state variable is changed, the whole component will be re-rendered.
+        * Example :--
+            >> import {useState} from 'react';
+            >> import [color,setColor] = useState('');
+            >> return (
+            >>      <div>
+            >>          <h1>My fav color is {color}</h1>
+            >>          <button onClick = {()=>{setColor('blue')}}>Click me to change color</button>
+            >>      </div>
+            >>          );
+        * Previous state refers to the state value of a component before the most recent update.
+        * Creating a Counter with useState :--
+            >> const [count,setCount] = useState(0);
+            >> function handleIncrement = () => {
+            >>      setCount(prevCount => prevCount + 1);
+            >>                                   }
+            >> return (
+            >>      <button onClick={handleIncrement}>Count : {count}</button>
+            >>        );
+     
+    * useEffect :--
+        * 
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+

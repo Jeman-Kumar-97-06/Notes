@@ -323,6 +323,29 @@ React Hooks :--
              >> const root = ReactDOM.createRoot(document.getElementById('root'));
              >> root.render(<Component1 />);
 
+    * useRef :--
+        * The useRef hook allows you to persist values between re-renders.
+
+
+    * useReducer :--
+        * The useReducer Hook is similar to the useState hook.
+        * This hook is used want to keep track of / update / change multiple pieces of state that rely on complex logic.
+        * Usually used when the state variable you want to keep track of is an Object/Array.
+        * useReducer takes 2 arguments : reducer function and initial state of the state variable.
+
+    * useMemo :--
+    
+    * Custom Hooks :--
+
+    * Hooks Best Practices :--
+
 --------------------------------------------------------------------------------------------------------------------------------------------
 
+React Router :--
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+State Management :--
+
+--------------------------------------------------------------------------------------------------------------------------------------------
 

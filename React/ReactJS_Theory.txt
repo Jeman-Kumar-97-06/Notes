@@ -204,12 +204,20 @@ React Hooks :--
         * It allows you to perform side effects on your functional components, like fetching data, directly updating DOM, and timers.
         * useEffect takes 2 args. First one is a function that explains the side effect. Second one is a dependency array that tells you
           when to invoke the function.
-        * If the dependency array is non empty, the function passed as 1st arg will be invoked whenever the component is invoked and variables in
-          dependency are updated/changed.
+        * If the dependency array is non empty, the function passed as 1st arg will be invoked whenever the component is invoked and variables
+          in dependency are updated/changed.
         * If the dependency array is empty, the function will run only once when component is mounted.
         * If there's no dependency array, the functino will run when component is mounted and also every time the component is re-rendered.
-        * 
+        * Example :--
+            >> import {useState,useEffect} from 'react';
+            >> export default Comp1 = () => {
+            >>      useEffect(()=>{
+            >>          --------Code to do tasks------
+            >>                     },[statevar1,statevar2])
+            >>                               };
 
+    * useContext :--
+        
 --------------------------------------------------------------------------------------------------------------------------------------------
 
 

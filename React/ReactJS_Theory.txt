@@ -336,16 +336,37 @@ React Hooks :--
     * useMemo :--
     
     * Custom Hooks :--
-
+        * Hooks are re-usable functions.
+        * When you have a complex logic as a part of a component that needs to be used by Other multiple components, can can make that logic
+          into a seperate Hook.
+        * Custom Hooks names always start with 'use'.
+        
     * Hooks Best Practices :--
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 
 React Router :--
+    * In general 'create-react-app' doesn't include page routing. An npm package 'react-router-dom' is used for that purpose.
+    * Install 'react-router-dom' using npm.
+    * Example :--
+        >> export default function App() {
+        >>      return (
+        >>          <BrowserRouter>
+        >>              <Navbar/>
+        >>              <Routes>
+        >>                  <Route exact path='/' element={<Home/>}/>
+        >>                  <Route path='/about' element={<About/>} />
+        >>              </Routes>
+        >>          </BrowserRouter>
+        >>              )
+        >>                               }
+        # Use "Link" to connect to those routes. "Link" tag will be rendered as anchor tag.
+        >> <Link to='/'>Home</Link>
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 
 State Management :--
+    * As your application grows, it helps to be more 
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 

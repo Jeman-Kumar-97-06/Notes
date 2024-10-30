@@ -1,0 +1,43 @@
+Web Mechanics :--
+    * 2 computers can be connected by linking them with 'Ethernet' cable for wifi or
+     bluetooth. 
+    * Such a network is not limited to two computers. You can connect as many pcs as
+    you wish . It gets complicated.
+    * So we use a Router. A Router is a pc that sends a pc's message to the right 
+    destination pc.
+    * A network of networks consists of routers connected to a bunch of routers...
+    * These routers and long distance networks are maintained by telephone infra-
+    -structure.We need 'Modems' to connect routers to telephone lines and convert 
+    data into information manageable by telephone infrastructure.
+    * The networks managed by these routers are in-turn managed by ISP companies.
+    * pc-->router-->ISP-->same/diff ISP-->router-->diff pc
+    * Each pc linked to a network has a unique IP Address [ex: 192.0.2.172].
+    * Domain Name : -- Alias of an IP Address (bcoz we are lazy to remember numbers)
+    * Internet :-- Is the network Infrastructure .
+    * Web [email, IRC...] :-- A service built on top of internet.
+    * Intranet :-- These are Private Networks that are Restricted to members of a 
+      particular organisation. They are commonly used to provide a portal for 
+      members to securely access shared resources, collaborate and communicate.
+    * Extranet :-- Like intranet, these are private networks too. But these are used
+      to connect securely with other organizations. They are used to securely share
+      info between clients/shareholder and stakeholders who work closely with a 
+      business.
+        Intranet --> part of --> Extranet --> part of --> Internet
+Web Security:--
+    Security : 
+            It's the act of keeping private data and systems protected against 
+    unauthorized access. This includes both company data and user and partner data.
+
+    Privacy  : 
+            It refers to the act of giving users control over how their data is
+    collected and stored and used, while also ensuring that it is not used irrespon-
+    -sibly. For example, you should let your users know what data you are collecting
+    from them, the parties with whom it will be shared, and how it will be used. 
+    Users must be given the chance to consent to your privacy policy, have access to
+    their data you store, and delete it they choose to.
+
+    Security features provided by browsers :
+        Same Origin Policy :--
+            It's a fundamental security mechanism of the web that restricts how a 
+        document or script is loaded from one origin can interact with a resource 
+        from another origin.

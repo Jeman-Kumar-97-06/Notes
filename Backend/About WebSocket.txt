@@ -9,6 +9,7 @@ What is a real-time web app:
     * Real-Time Communication between server-client can be done by
         WebSockets,Server-Sent-Events, Long-Polling,Short-Polling,
         WebRTC, WebTransport
+
 Short Polling :--
     * An In-Efficient way to get real-time data.
     * It involves the client sending HTTP reqs at regular intervals
@@ -41,12 +42,13 @@ Web socket :
     connection.
     * The Server & Client can send responses & requests 
     simultaneously.
+
 Socket.io :-
     * Socket.io is an npm package used to implement WebSocket.
     * Socket.io is not a WebSocket Only Implementation.
     * Socket.io uses heartbeat mechanism to check if a WebSocket
     connection can be established. Then it used web socket to 
-    connect or else it will use http for Web Transport
+    connect or else it will use http long polling
     * Socket.io has features like packet buffering and Automatic
      Reconnection.
     * Install socket.io with "npm install socket.io"

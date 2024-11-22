@@ -38,6 +38,8 @@
                 >> arr.shift();
                 >> console.log(arr); --> This will give [1,2,3,4,5];
 
+        * Refer splice, slice, split
+
 --> Scope :--
         --> Block Scope :--
                 >> {let x = 2};

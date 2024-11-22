@@ -17,7 +17,7 @@
      >>              '{name:"Jeman"}',
      >>              ()=>{ console.log('File Written')}
      >>              );
-     --> The Above code creates the specified file if there's one, and deletes whatever is in the file initially
+     --> The Above code creates the specified file if there isn't one, and deletes whatever is in the file initially
 
 * Working with Directories :--
      --> To Create as Folder,

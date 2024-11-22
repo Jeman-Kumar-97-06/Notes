@@ -17,4 +17,4 @@ What is Redis :--
                                                              age  --> 27
             * The Value can be 'string' [ex: 'Jeman']
                                'sets'   [ex: {'jeman','jeevan','kumar'}] --> unordered, unique elements
-                               '
+                               'hashes' 

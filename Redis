@@ -1,0 +1,20 @@
+What is Redis :--
+    -> Redis is a in-memory data store
+    -> It's a key-value structure.
+    -> Traditionally used as a caching layer.
+    -> Data is stored in ram [so, very fast]
+    -> Usually if an api has to connect to a database to get data,
+       it would take time. But using Redis as a caching layer can save time.
+    -> It stores queried data temporarily to save time when queries are repetitive
+       or similar to each other.
+    -> The disadvantage of Redis as a caching layer is, when the server restarts or crashes,
+       the data will be deleted.
+    -> But due to improvements, Redis can now be used as a primary database.
+    -> This is due to features like Data Persistance, JSON Support, Search, Redis OM [Object Mapper] 
+    -> The Above features attached as modules to Redis Core, together form Redis Stack.
+    -> Data Types in Redis :--
+            * Key - Value pairs with key as identifier. Ex : name --> 'jeman'
+                                                             age  --> 27
+            * The Value can be 'string' [ex: 'Jeman']
+                               'sets'   [ex: {'jeman','jeevan','kumar'}] --> unordered, unique elements
+                               'hashes' 

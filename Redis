@@ -15,6 +15,11 @@ What is Redis :--
     -> Data Types in Redis :--
             * Key - Value pairs with key as identifier. Ex : name --> 'jeman'
                                                              age  --> 27
-            * The Value can be 'string' [ex: 'Jeman']
-                               'sets'   [ex: {'jeman','jeevan','kumar'}] --> unordered, unique elements
-                               'hashes' 
+            * The Values can be 'string' [ex: 'Jeman']
+                                'sets'   [ex: {'jeman','jeevan','kumar'}] --> unordered, unique elements
+                                'hashes' -> Data structures that allow you to store multiple field-value
+                                           pairs under a single key. Each field-value pair within a hash
+                                           is referred to as a "field" and "value". They look like objects
+                                'lists'  -> collection of elements which don't need to be unique.
+                                'sorted sets' -> a collection of unique strings [members] ordered by an 
+                                                associated score.

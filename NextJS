@@ -1,0 +1,8 @@
+Client Side Rendering vs 
+What is NextJS :--
+    -> Framework for creating pre-rendered React websites.
+    -> You can create search-engine-optimized apps with zero configuration.
+    -> A Traditional React app is rendered client-side.
+    -> NextJS offered both server-side rendering and Static-side Generation.
+    -> SSG and SSR provides bettery SEO and performance.
+    -> 

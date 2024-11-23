@@ -36,14 +36,15 @@ Web Mechanics :--
       business.
         Intranet --> part of --> Extranet --> part of --> Internet
 
-<<<<<<< HEAD
-=======
+=======================================================================================
+
     * OSI Model:--
         * Also called the Open Systems Interconnection Model is a reference model 
         from the International Organization for Standardization (ISO) that 
         provides a common
 
->>>>>>> 948982111443fa69bcb8f7495c07af72e3db1bdf
+======================================================================================
+
 Web Security:--
     Security : 
             It's the act of keeping private data and systems protected against 

@@ -25,6 +25,7 @@ TypeScript :--
                     firstName = 33; ---> This will give error.
             --> Ex2 :--
                     let firstName = 'jeman';
-                     firstName = 33; --> this will give error too.
+                    firstName = 33; --> this will give error too.
+
 
             

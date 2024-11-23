@@ -6,3 +6,17 @@ TypeScript :--
     --> To run the compiler use $ npx tsc [this command will display help page]
     --> The compiler can be configured using tsconfig.json file
     --> To generate that file, run $ npx tsc --init
+    --> There are 3 main primitive types of data in Typescript and Javascript:--
+            --> Boolean :-- True / False
+            --> Number  :-- whole numbers and floating point values
+            --> String  :-- text values.
+    --> There are alse 3 not so common primitive data types :--
+            --> Bigint  :-- Just like number data type as above, but allows larger -ve and +ve nums
+            --> Symbol  :-- Are used to create globally unique identifier.
+    --> Type Assignment :-- 
+            --> Explicit :-- Writing out the type :--
+                    ex :-- let name : string = 'Jeman';
+
+            --> Implicit :-- Guess the type :--
+                    ex :-- let name = 'jeman';
+            

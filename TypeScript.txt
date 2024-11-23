@@ -19,4 +19,12 @@ TypeScript :--
 
             --> Implicit :-- Guess the type :--
                     ex :-- let name = 'jeman';
+    --> Re-assigning a different type of data to a variable will give error :
+            --> Ex1 :-- 
+                    let firstName : string = 'Jeman';
+                    firstName = 33; ---> This will give error.
+            --> Ex2 :--
+                    let firstName = 'jeman';
+                     firstName = 33; --> this will give error too.
+
             

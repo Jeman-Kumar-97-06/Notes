@@ -1,0 +1,33 @@
+Virtualization vs Containerization:--
+    * Traditional way to run a bussiness with servers:--
+        * Apps run on servers.
+        * A company's email service / DB service / Website used to run on one server each.
+        * The OS on those servers didn't have the capability to run multiple apps securely on a single server.
+        * Running one application per server was a waste of money.
+        * To solve this virtual machines were invented.
+    * Virtual Machines :--
+        * When it comes to VMs, if you want to run a email, web service, and app on a single server, you install 3
+        VMs inside a server.
+        * These 3 VMs share the hardware resources of the server
+        * VM :-- 
+                    server/hardware ---> Hypervisor ---> Virtual machines--> OS--> Apps
+                * At bottom server/hardware.
+                * Hypervisor is what allows one machine to run multiple virtual machines.
+                * Hypervisor allocates and controls the sharing the machines' hardware.
+                        Ex :-- VMware ESXi
+                           Citrix XenServer
+                           Microsoft Hyperv
+                * VM uses the shares hardware resources to run the os and app upon it.
+                * Each VM has their own OS.
+                * Dis-Advantages :-- 
+                    * Consume a lot of disk space.
+                    * Consumes a lot of RAM and CPU power from server.
+                    * Slow to startup.
+                    * Requires a license for each OS.
+
+    * Containers:--
+         * A container is an app that's been packages with all the:
+                Files , Configurations, Dependencies necessary to run it.
+         * 
+                    
+                

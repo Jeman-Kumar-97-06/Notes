@@ -28,7 +28,7 @@ Virtualization vs Containerization:--
     * Containers:--
                   server/hardware --> OS --> Container Engine --> Apps
          * A container is an app that's been packages with all the:
-                Files , Configurations, Dependencies necessary to run it.
+                --> Files , Configurations, Dependencies necessary to run it.
 
          * Disadvantages :--
                 --> If the server crashes all the containers will be crashed
@@ -36,6 +36,9 @@ Virtualization vs Containerization:--
         
     # Containers and VMS can work together.
         --> Ex :-- 2 or more VMS with One or More than One Containers can run.
+
+Docker :--
+    * 
          
                     
                 

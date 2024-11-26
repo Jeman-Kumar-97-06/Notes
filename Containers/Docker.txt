@@ -53,7 +53,22 @@ Docker :--
         * Docker container is a runnable instance of Docker image.
         * Containers are Isolated Processes.
         * Meaning, they run independently of any other process running on the computer.
-        * 
+        * Docker images are made up of different layers:--
+        	* parent image--> source code --> dependencies --> run commands
+        * To create your own image with all the above layers. That docker file will have all the commands & instructions to 
+          create a docker image.
+        * Refer docker file in the project you did to see how a docker file works.
+        * Running docker files, Building Images from them, running containers at a certain port can be done on docker-desktop.
+        * When it comes to using terminal commands :--
+        	$ docker images ---> Provides a list of images installed
+        	$ docker run --name <custom_container_name> <image_name> --> you can't access this cuz, like in docker-desktop's 'optional settings', we didn't specify localhost.
+        	$ docker run --name <custom_container_name> -p <port_of_choice>:<port exposed to container> <image_name> 
+        	# the above commands will run the containers and you can see that in the terminal. At this point you can't do any thing in the terminal.
+        	# to detach the container process from the terminal, so that you can resume working on terminal, use the "-d" flag before <image_name> in the above commands.
+        		Ex :-- docker run --name <cusetom_container_name> -p <port_of_choice>:<port_exposed_to_container> -d <image_name>
+        	$ docker ps --> Provides a list of docker container processes running in background.
+        	$ docker stop <container_name> --> This will stop the container.
+        
          
                     
                 

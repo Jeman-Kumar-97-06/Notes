@@ -66,9 +66,24 @@ Docker :--
         	# the above commands will run the containers and you can see that in the terminal. At this point you can't do any thing in the terminal.
         	# to detach the container process from the terminal, so that you can resume working on terminal, use the "-d" flag before <image_name> in the above commands.
         		Ex :-- docker run --name <cusetom_container_name> -p <port_of_choice>:<port_exposed_to_container> -d <image_name>
+        	# Docker run runs an image to start a container. If you want to start an existing container with gives settings and specified port,
+        		$ docker start <container_name>
         	$ docker ps --> Provides a list of docker container processes running in background.
+        	$ docker ps -a --> Provides a list of docker containers even if they aren't running.
         	$ docker stop <container_name> --> This will stop the container.
-        
+        * Docker Layer Caching (DLC) :-- 
+        	* A feature that speeds up the process of building Docker images by re-using layers that has already been created.
+        		* Ex :-- if a docker file has 6 layers:--
+        				1. FROM node:current-alpine
+        				2. WORKDIR /app
+        				3. COPY . .
+        				4. RUN npm install
+        				5. EXPOSE 4000
+        				6. CMD ["node","app.js"]
+        			 let's say you made changes to app.js:-
+        			 	Now, till layer 3. all layers will be reused from the cache.
+        			 	But since you made changes to app.js and it should be COPYied again,
+        			 	all the layers from there will be created again. 
          
                     
                 

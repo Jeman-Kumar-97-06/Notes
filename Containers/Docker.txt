@@ -27,7 +27,7 @@ Virtualization vs Containerization:--
 
     * Containers:--
                   server/hardware --> OS --> Container Engine --> Apps
-         * A container is an app that's been packages with all the:
+         * A container is an app that's been packaged with all the:
                 --> Files , Configurations, Dependencies necessary to run it.
 
          * Disadvantages :--
@@ -38,7 +38,22 @@ Virtualization vs Containerization:--
         --> Ex :-- 2 or more VMS with One or More than One Containers can run.
 
 Docker :--
-    * 
+    * Docker is a software platform that allows you to build, test, and deploy apps quickly using containers.
+    * Docker Image :--
+    	* A Docker image is a file that contains the instructions and files needed to create a Docker container.
+    	* A Docker image acts as a template/blueprint with instructions for building Docker container.
+    	* A Docker image stores :-- 
+    		* Run time env [ex:-- specific node version]
+    		* Application code
+    		* Dependencies 
+    		* Extra Config [ex :-- .env files ]
+    		* Commands.
+    		* A file system of it's own
+        * Docker images are read-only.
+        * Docker container is a runnable instance of Docker image.
+        * Containers are Isolated Processes.
+        * Meaning, they run independently of any other process running on the computer.
+        * 
          
                     
                 

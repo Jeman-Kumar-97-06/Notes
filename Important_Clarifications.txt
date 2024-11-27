@@ -1,0 +1,97 @@
+Javascript :--
+	Destructuring Objects/Strings/Arrays :-- An assignment syntax used to unpack object properties into variables.
+		Ex1 :-- 
+			const person = { firstName : "John", lastName : "Doe", age : 50 };
+			let {firstName, lastName} = person;
+			console.log(firstName) --> John
+		Ex2 :--
+			const person = { firstName : "John", lastName : "Doe", age : 50 };
+			let {firstName,lastName:lName} = person;
+			console.log(lName) --> Doe
+		Ex3 :--
+			const person = {id:339,name:"Fred",age:42,education:{degree:"Masters"}}
+			let {education:{degree}} = person;
+			console.log(degree) --> "Masters"
+		Ex4 :--
+			let name = 'Jemankumar';
+			let [a1,a2,a3,a4,a5] = name;
+			console.log(a1) --> "J"
+			console.log(a5) --> "n"
+		Ex5 :--
+			let fruits = ["Bananas","Oranges","Apples","Mangoes"];
+			
+			let [f1,f2] = fruits;
+			console.log(f1) --> "Bananas";
+			console.log(f2) --> "Oranges";
+			
+			let [f1,,,f2] = fruits;
+			console.log(f1) --> "Bananas";
+			console.log(f2) --> "Mangoes";
+			
+			let {[0]:f1,[2]:f2} = fruits;
+			console.log(f1) --> "Bananas";
+			console.log(f2) --> "Apples";
+		
+		Ex6 :--
+			let fname = 'Jeman';
+			let lname = 'Kumar';
+			[fname,lname] = [lname,fname]; --> Values swapped.
+			
+		Ex7 :--
+			const numbers = [10,20,30,40,50];
+			const [a,b,...rest] = numbers; --> Using Spread Operator
+			console.log(rest) --> [30,40,50];
+	Using Spread Operator:--
+		Ex :-- 
+			const myV1 = {brand : 'Ford',model : 'Mustange',color : 'red'};
+			const myV2 = {type : 'car',year : 2011, color : 'yellow' };
+			const myV1V2 = {...myV1, ...myV2};
+			console.log(myV1V2) --> {brand: 'Ford',model: 'Mustang',color: 'yellow',type: 'car',year: 2021} --> This is a Deep copy.
+
+	Difference between Shallow Copy and Deep Copy :--
+		* Shallow Copy :--
+			* A shallow copy of an object is a copy whose properties share the same references as those of the source object from which the copy 
+			was made.
+			* Here when you make changes to the copy the original object will also change.
+		* Deep Copy :--	
+			* A deep copy of an object is a copy whose properties do not share the same references as those of the source object from which the
+			copy was made
+			* Here when you make changes to the copy the original object will NOT change.
+			
+		# Primitive Data types like Number, String, Boolean, undefined, null will make a deep copy by default.
+			Ex :-- 
+				>> const a = 5;
+				>> let b   = a;
+				>> b       = 6;
+				>> console.log(b); --> will give 6
+				>> console.log(a); --> will give 5
+		# Composite Data types like Objects and Arrays will make a shallow copy by default.
+			Ex :-- 
+				>> const a = { en : "hello",de : "Hallo",pt : "Ola" }
+				>> let b   = a;
+				>> b.pt    = 'Oi';
+				>> console.log(b.pt);
+				>> console.log(a.pt);
+		# You can use Spread operator to make a deep copy of an object.
+			Ex :-- 
+				>> const a = {en:"Bye",de:"Tschuss"};
+				>> let b   = {...a};
+				>> b.de    = 'Ciao';
+				>> console.log(b.de); --> Ciao
+				>> console.log(a.de); --> Tschuss
+		# Making Deep copies of Objects without Thinking :--
+			Ex :-- 
+				>> const a = {foods:{dinner:'Pasta'}};
+				>> let b   = JSON.parse(JSON.stringify(a)); --> This will create a deep copy.
+		
+		# Making Deep Copies ofArrays :--
+			Ex1 :-- Using spread operator :--
+				>> cosnt a = [1,2,3];
+				>> let b   = [...a];
+			Ex2 :-- Using map,filter,reduce :--
+				>> const a = [1,2,3];
+				>> let b   = a.map(el=>el);
+				>> let c   = a.slice(0);
+
+	Difference between Javascript methods and Functions :--
+	

@@ -66,7 +66,7 @@ Docker :--
         	# the above commands will run the containers and you can see that in the terminal. At this point you can't do any thing in the terminal.
         	# to detach the container process from the terminal, so that you can resume working on terminal, use the "-d" flag before <image_name> in the above commands.
         		Ex :-- docker run --name <cusetom_container_name> -p <port_of_choice>:<port_exposed_to_container> -d <image_name>
-        	# Docker run runs an image to start a container. If you want to start an existing container with gives settings and specified port,
+        	# Docker run runs an image to start a container. If you want to start an existing container with given settings and specified port, in detached mode :--
         		$ docker start <container_name>
         	$ docker ps --> Provides a list of docker container processes running in background.
         	$ docker ps -a --> Provides a list of docker containers even if they aren't running.
@@ -85,5 +85,19 @@ Docker :--
         			 	But since you made changes to app.js and it should be COPYied again,
         			 	all the layers from there will be created again. 
          
-                    
-                
+	* Docker : Managing images & containers :--
+		* Deleting docker images :--
+			$ docker image rm <image_name> --> Used to delete images only when the containers using it is deleted.
+			$ docker image rm <image_name> -f --> Used to delete images even if the containers are using it.
+			$ docker iamge rm node:latest --> will delete node:latest
+			$ docker image rm node ---------> will delete all node images irrespective of the tags attached.
+			
+		* Deleting docker containers :--
+			$ docker container rm <container_name>
+		
+		* Deleting all Images & Containers :--
+			$ docker system prune -a 
+		
+        * Docker Volumes :--
+        	* Usually when you make changes to project code, you have the rebuild the docker image with the dockerfile and then start the container to see changes.
+        	There's way to solve this by using volumes:--

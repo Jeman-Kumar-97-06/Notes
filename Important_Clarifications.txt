@@ -95,3 +95,11 @@ Javascript :--
 
 	Difference between Javascript methods and Functions :--
 	
+	
+	What are Javascript Promises:--
+		A Promise in JavaScript is an object representing the eventual completion or failure of an asynchronous operation.
+		It enables you to register callbacks for notifications when the operation completes or fails and to handle errors 
+		or results. Promises provide a way to write asynchronous code that is more readable and manageable than using 
+		callback functions. A Promise has three states, which are Pending, Fulfilled and Rejected.Creating a Promise is
+		possible using the Promise constructor, which requires the executor function. The executor function receives two 
+		arguments, namely, resolve and reject. You can call resolve when the operation succeeds and reject when the operation fails.

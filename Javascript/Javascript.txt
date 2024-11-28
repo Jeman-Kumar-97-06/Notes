@@ -20,9 +20,6 @@
 
         --> What will work :--
                >> str = 'Leman' ;  --> This will work
-               
---> Shallow Copy vs Deep Copy :--
-	--> Shallow Copy :--
 
 --> Arrays :--
         >> let arr = [1,2,3,4,5];

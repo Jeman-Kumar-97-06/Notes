@@ -63,6 +63,8 @@ Docker :--
         	$ docker images ---> Provides a list of images installed
         	$ docker run --name <custom_container_name> <image_name> --> you can't access this cuz, like in docker-desktop's 'optional settings', we didn't specify localhost.
         	$ docker run --name <custom_container_name> -p <port_of_choice>:<port exposed to container> <image_name> 
+        	$ docker run --name <custom_container_name> -p <port_of_choice>:<port exorted to container> --rm <image_name> --> This will do the same thing as above, but will delete
+        															  container as soom as you stop it.
         	# the above commands will run the containers and you can see that in the terminal. At this point you can't do any thing in the terminal.
         	# to detach the container process from the terminal, so that you can resume working on terminal, use the "-d" flag before <image_name> in the above commands.
         		Ex :-- docker run --name <cusetom_container_name> -p <port_of_choice>:<port_exposed_to_container> -d <image_name>

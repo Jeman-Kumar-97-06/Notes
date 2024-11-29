@@ -103,3 +103,17 @@ Docker :--
         * Docker Volumes :--
         	* Usually when you make changes to project code, you have the rebuild the docker image with the dockerfile and then start the container to see changes.
         	There's way to solve this by using volumes:--
+        		* Volumes are a docker feature that allows data to be stored and managed persistently outside containers.
+        		* We are going to map the code folder to the volume folder so that i can keep track of the changes.
+        		* To Create a Volume :--
+        			$ docker run --name <container_name> -p <port_of_ur_choice> : <exposed_port_for_container> --rm -v <absolute_path_of_Code_folder[not relative]> : <working_dir> <image_name>
+        			* The Above command will map all the code files to a volume folder inside the container. So any changes in the code folder will sync with the same files inside container.
+        			 But the problem is, if we delete node_modules folder [which we don't need], the same folder in container will also be deleted which we don't want to happen.
+        			* So we have to find a way to sync all the changes in files in original folder with volume in the container. But, keep "node_modules" folder uneffected. so do the following:--
+        			$ docker run --name <container_name> -p <port_of_ur_choice> : <exporsed_port> --rm -v <abs_path_of_code> : <working_dir> -v /app/node_modules <image_name>
+        			* If you observe properly, '/app/node_modules' folder is not the original code folder but the mapped folder inside the container. This will again in turn be mapped to some
+        			unknown different volume folder managed by docker. This overrides the provious volume folder and maps only the 'node_modules' folder to a different volume.
+        			* NOW IF YOU MAKE ANY KIND OF CHANGES TO CODE, IT WILL REFLECT. NO NEED TO DELETE AND CREATE IMAGE AGAIN WITH THE DOCKER FILE.
+
+	* Docker Compose :--
+		* 

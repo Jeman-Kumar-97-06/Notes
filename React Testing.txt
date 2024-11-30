@@ -17,3 +17,18 @@ React Testing :--
 			* End-to-end (E2E) testing is a software testing technique that simulates 
 			real-world user scenarios to validate an application's functionality and 
 			performance from start to finish
+	* Typical Test Structure :--
+		1. Render a component we want to test.
+		2. Find elements inside that component that we want to interact with.
+		3. Interact with those elements.
+		4. Assert/ See that the results are as expected.
+		Ex :-- App.test.js:--
+			>> test('renders learn react like',()=>{
+			>>	render (<App/>); --------------------------------------> Renders <App/>
+			>>	const linkElement = screen.getByText(/learn react/i); -> get the Element we want to run tests on
+			>>	expect (linkElement).toBeInTheDocument(); -------------> Interect with the element to assert some thing [in this case, see if its in the document or not]
+			>> });
+	* React Testing Library Query Methods :--
+	* Tests :--
+		$ npm run test --> runs all the files with '.test.js' extension inside the project folder, no matter where it is located.
+		

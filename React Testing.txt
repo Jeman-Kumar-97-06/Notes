@@ -25,10 +25,12 @@ React Testing :--
 		Ex :-- App.test.js:--
 			>> test('renders learn react like',()=>{
 			>>	render (<App/>); --------------------------------------> Renders <App/>
-			>>	const linkElement = screen.getByText(/learn react/i); -> get the Element we want to run tests on
+		   Linex>>	const linkElement = screen.getByText(/learn react/i); -> get the Element we want to run tests on
 			>>	expect (linkElement).toBeInTheDocument(); -------------> Interect with the element to assert some thing [in this case, see if its in the document or not]
 			>> });
-	* React Testing Library Query Methods :--
+	* React Testing Library Query Methods :-- See linex, there's a querymethod.
+		
+		
 	* Tests :--
 		$ npm run test --> runs all the files with '.test.js' extension inside the project folder, no matter where it is located.
 		

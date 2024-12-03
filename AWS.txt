@@ -1,0 +1,58 @@
+How Browser/Client and Server Comms work :--
+	* A Browser / Client has an IP Address.
+	* A Server that has required data/ app/ website has an IP Address too
+	* The Network in between managed by ISP creates / manages communication between these two.
+
+What is SERVER Composed of :--
+	* CPU 
+	* RAM
+	* Storage
+	* DB
+	* Network Devices :-- Routers, Switch , DNS Server
+
+Traditional Way of Hosting :--
+	* People used to literally buy servers from store and put them in their homes and host a website.
+	* As businesses grew people had to move to a big ass office, maintain a data center room to keep the servers and then used to scale them by adding more servers and drives.
+	* Problems with this approach :--
+		* Lot of rent to maintain data centers.
+		* Increase in cost of power supply,cooling and maintainance.
+		* Adding and replacing hardware takes time.
+		* Scaling is limited. [Like how many disks are you going to put in there mate!]
+		* Cost of hiring a team to maintain all this shit.
+Modern Cloud Computing :--
+	* Cloud computing is the on-demand delivery of compute power, database storage, apps, and other IT resources.
+	* This has Pay-as-you-go pricing.
+	* You can access all this instantly.
+	* AWS owns and maintains the network-connected hardware required for these app services, while you provision and use what you need via a web app.
+	* Easy to maintain and cost effective.
+	* Ex :-- GMAIL is a cloud email service
+		 Drop Box is a cloud storage service built on aws!
+		 Netflix is a cloud video streaming service built on aws too!
+	* Different types of cloud / deployment models of cloud:--
+		* Private Cloud:
+			* Cloud services used by a single organization, not exposed to the public.
+			* So, only a single person/ members of a single organization can use it.
+			* That person/organization has the complete control.
+			* Enhanced security for sensitive apps / data of the organization
+			* Ex: rack space company ...
+		* Public Cloud :
+			* A big set of computers and storage managed by companies like AWS,Azure,Google. Many people and businesses use it at the same time.
+			You rent space or services when you need them, and cloud provider takes care of maintaining every thing.
+			* It's flexible, easy to access, and you only pay for what you use. But it's not exclusively yours. 
+			* Ex : AWS, Google Cloud, Microsoft Azure.
+		* Hybrid Cloud :
+			* A Hybrid Cloud is a mix of both private cloud (your own secure space) and public cloud (shared resources). 
+			You can use your private setup for sensitive stuff and the public one when you need extra power or flexibility. 
+			They work together, so you get the best of both worlds!
+	* Five Characteristics of Cloud COmputing :--
+		* On Demand Self Service :--
+			* Users can provision resource and use them without human interaction from the service provider.
+		* Broad Network Access :--
+			* Resources available over the network and can be accessed by diverse client platforms.
+		* Multi-tenancy :--
+			* Multiple customers can share the same infrastructure and applications with security and privacy.
+		* Rapid Elasticity and Scalability :--
+			* Automatically and quickly acquire and dispose resources when needed.
+			* Quickly and easily scale based on demand.
+		* Measured Service:
+			* 

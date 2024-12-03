@@ -29,7 +29,8 @@ React Testing :--
 			>>	expect (linkElement).toBeInTheDocument(); -------------> Interect with the element to assert some thing [in this case, see if its in the document or not]
 			>> });
 	* React Testing Library Query Methods :-- See linex, there's a querymethod.
-		
+		Ex :-- getByRole, getByLabelText, getByPlaceholderText, getByText, getByAltText, getByTitle, getByTestID.
+	* 
 		
 	* Tests :--
 		$ npm run test --> runs all the files with '.test.js' extension inside the project folder, no matter where it is located.

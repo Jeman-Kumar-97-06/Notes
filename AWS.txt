@@ -55,4 +55,16 @@ Modern Cloud Computing :--
 			* Automatically and quickly acquire and dispose resources when needed.
 			* Quickly and easily scale based on demand.
 		* Measured Service:
-			* 
+			* Pay for what you need.
+	* Advantages of Cloud Computing :--
+		* Trade Capital Expense (CAPEX) for operational expense (OPEX).
+			* Pay on Demand : Don't own hardware
+			* Reduced Total Cost of Ownership
+		* Benefit from massive economies of scale.
+			* Prices will be reduced as AWS grow more effiecient and in scale.
+		* Stop guessing capacity :
+			* Scale based on actual use.
+		* Increase speed and agility
+		* You dont' have to maintain hardware and shit.
+	* Types of Cloud Computing :--
+		* Infrastructure as a Services (IaaS):--

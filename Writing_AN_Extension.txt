@@ -1,0 +1,36 @@
+Extension Terminology:--
+	* Manifest :--
+		The extension manifest is the only required file that must
+		have a specific file name: manifest.json. It also has to be
+		located in the extension's root dir. The manifest records
+		important metadata, defines resources, declares permissions
+		 and identifies which files to run in the background and on
+		the page.
+	* Service Workers :--
+		A service worker runs in the background and handles browser
+		events, like removing bookmarks, closing a tab or other 
+		tasks like loading api resonse data and so on. They don't 
+		have access to the DOM, but you can combine it with an off-
+		screen document for this use case.
+	* Content Script :--
+		These run JS in the context of web page that users visit,
+		without screwing with the javascript of that web page.
+	* Toolbar actinon :--
+		
+		
+Typical Structure of Browser Extension:--
+	* My extension :--
+		manifest.json
+		background.js
+		scripts/
+			content.js
+			react.production.min.js
+		popup/ ------------------------------->Shit to show when user
+			popup.html		       user clicks extension icon
+			popup.js		       on the toolbar.
+			popup.css
+		images/
+			icon-16.png
+			icon-32.png
+			icon-48.png
+			icon-128.png

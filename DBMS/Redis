@@ -7,6 +7,7 @@ What is Redis :--
        it would take time. But using Redis as a caching layer can save time.
     -> It stores queried data temporarily to save time when queries are repetitive
        or similar to each other.
+    -> Redis' cache is stored on server -side
     -> The disadvantage of Redis as a caching layer is, when the server restarts or crashes,
        the data will be deleted.
     -> But due to improvements, Redis can now be used as a primary database.
@@ -23,3 +24,15 @@ What is Redis :--
                                 'lists'  -> collection of elements which don't need to be unique.
                                 'sorted sets' -> a collection of unique strings [members] ordered by an 
                                                 associated score.
+    -> Key-Value Pairs :--
+    	* When it comes to storing key-value pairs with unique key,
+    		Ex :-- books --> {'book1','book2'}
+    	* Storing different books as hashes:
+    		Ex :-- books:1 --> {title:"...",author:"..."} 
+    		       books:2 --> {title:"...",author:"..."}
+    		       * In the above example, 1 and 2 are IDs.
+
+Using Redis Cloud:--
+	* Signup for a free account on Redis website.
+	* You will be redirected to 'Redis Cloud Console'/Dashboard.
+	* 

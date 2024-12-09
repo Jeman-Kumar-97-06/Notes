@@ -62,4 +62,5 @@ Redis Basic Commands :--
 		>> DECR rating --> it wil go back to 10
 		>> INCRBY rating 5 --> it will increase to 15
 		>> DECRBY rating 5 --> it will be back to 10
+	
 		

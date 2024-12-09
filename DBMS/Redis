@@ -62,5 +62,14 @@ Redis Basic Commands :--
 		>> DECR rating --> it wil go back to 10
 		>> INCRBY rating 5 --> it will increase to 15
 		>> DECRBY rating 5 --> it will be back to 10
-	
+		
+		>> SET name jeman GET :-- if 'name' was initially 'jeevan', this command will change the 'name' value to 'jeman' and print 'jeevan'
+	* SETS :-- a list of elements that are unordered and unique:--
+		>> SADD names jeman jeevan john doe --> will create SET with key 'names' and value {jeman,jeevan,john,doe}
+		>> SREM names jeman --> Will delete 'jeman' from the set 'names'
+		>> SADD moreNames link zelda
+		>> SUNION names moreNames --> will create union between 'names' and 'moreNames' --> {jeman,jeevan,john,doe,link,zelda}
+		>> SISMEMBER names link --> will check if 'name' has 'link' inside the set.'1' if true and '0' if false.
+		
+	* LISTS :-- 
 		

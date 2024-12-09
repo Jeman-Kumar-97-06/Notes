@@ -78,4 +78,24 @@ Redis Basic Commands :--
 		* Lists are best used when it comes to situations where you have to keep the lenght constant. So, when a new one is pushed into the list the first one should be popped from
 		the front:-
 			ex :-- List of last 10 queries made by a user.
+		>> LPUSH orders nyu "chun-li" --> a list names 'orders' will be created with 'nyu' at index 1 and 'chun-li' at index 0 [ie, the latest one is always in the front].
+			* LPUSH pushed from left
+		>> RPUSH orders 'jeman' 'jeevan' --> RPUSH means right push. the list will now be [chunli nyu jeman jeevan]
+		>> LPUSH orders 'sagar' 'berlin' --> Now the list will be [berlin,sagar,chunli,nyu,jeman,jeevan]
+		
+		>> LPOP orders 1 -->Here '1' in the command is the count of elements to remove. Now the list will be [sagar,chunli,nyu,jeman,jeevan]. Finally it will return the removed elem.
+		>> RPOP orders 2 -->Now the list will be [sager,chunli,nyu]. Finally it will return removed elements in the order --> jeevan, jeman
+		
+		>> LLEN orders --> Will outpout length of list.
+		
+		>> LRANGE orders 0 1 --> will return [sagar, chunli]
+		>> LRANGE orders 0 2 --> will return [sagar, chunli, nyu]
+		
+		>> LRANGE orders -2 -1 --> will return [chunli, nyu]
+		
+		>> LINDEX orders 1 --> will return 'chunli' [The element with index 1]
+		
+		>> LPOS orders 'sagar' --> will return 0 i.e., the index of 'sagar'
+		
+	* Hashes :-- Hashes are JSON lookalikes. Each key inside hashes should only have string values.
 		

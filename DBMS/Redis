@@ -98,4 +98,26 @@ Redis Basic Commands :--
 		>> LPOS orders 'sagar' --> will return 0 i.e., the index of 'sagar'
 		
 	* Hashes :-- Hashes are JSON lookalikes. Each key inside hashes should only have string values.
+			Ex :-- 
+				books:1 : {title:"Name ofthe Wind"} --> Correct
+				books:1 : {title:['jeman','jeevan'} --> Wrong
+		>> HSET books:1 title "Name of the Wind" --> Will create a hash 'books:1' with 'title' set to 'Name of the wind'
+		>> HSET books:1 author "Patrick RothFuss" --> Will add 'author':'Patrick Rothfuss' key-value pair to the 'books:1' hash.
+		
+		>> HSET books:1 author "Patrick Yo"--> Will change 'author' value and return 1 or 0 to tell us success or fail.
+		
+		>> HSET books:2 title "A wise man's fear" author "Patrick Rothfuss" rating 8
+	
+		>> HGET books:2 title --> Will return 'A wise man's fear'--> Only return value of the key specified.
+		>> HGETALL books:2 --> Will return all keys and their values.--> It will be printed in order as 'title' 'A wise man's fear' 'author' 'Patrick Rothfuss' 'rating' '8'
+					When using redis client library to work on the backend dev, this will be printed beautifully as a JS Object.
+		
+		>> HEXISTS books:2 title --> Will return '1' confirming that 'title' key exists in books:2
+		
+		>> HKEYS books:2 --> Prints only keys inside 'books:2'
+		>> HVALS books:2 --> Prints only the values inside 'books:2'
+		
+		>> HDEL books:2 author --> will delete 'author' key-value pair from 'books:2' and return '1' saying the operation is success.
+		
+		>> DEL books:2 --> Will delete the whole 'books:2' hash and return '1' saying the operating is success.
 		

@@ -71,5 +71,11 @@ Redis Basic Commands :--
 		>> SUNION names moreNames --> will create union between 'names' and 'moreNames' --> {jeman,jeevan,john,doe,link,zelda}
 		>> SISMEMBER names link --> will check if 'name' has 'link' inside the set.'1' if true and '0' if false.
 		
-	* LISTS :-- 
+	* LISTS :-- A collection of elements that need not be unique:--
+		* Lists in Redis behave like Linked Lists. Elements of Lists are not saved in Consecutive memory blocks. Instead they are scattered randomly with each element storing the
+		value and the location of the next element.
+		* Hence accessing an element inside the list is slow compared to 'pop' or 'push' which are fast.
+		* Lists are best used when it comes to situations where you have to keep the lenght constant. So, when a new one is pushed into the list the first one should be popped from
+		the front:-
+			ex :-- List of last 10 queries made by a user.
 		

@@ -32,7 +32,34 @@ What is Redis :--
     		       books:2 --> {title:"...",author:"..."}
     		       * In the above example, 1 and 2 are IDs.
 
-Using Redis Cloud:--
+Using Redis Cloud and Redis Insight:--
 	* Signup for a free account on Redis website.
 	* You will be redirected to 'Redis Cloud Console'/Dashboard.
-	* 
+	* Create a database and from the 'Databases' tab download 'Redis Insight'
+	* 'Redis Insight' is like 'Mongoose Compass'.
+	* Open 'Redis Insight'. The UI is intuitive.
+	* The 'Workbench' tab in 'Redis Insight' allows us to execute commands to screw with data.
+Redis Basic Commands :--
+	* Strings & Numbers :--
+		>> SET name "jeman" --> will save as string
+		>> SET name jeman   --> will save as string as well
+		>> SET name jeman kumar --> Error :-- if space is included, use quotes.
+		>> SET name 'jeman kumar' --> THis works.
+		
+		>> GET name --> Will get the value of the key 'name'
+		
+		>> DEL name --> Will delete the data with key as 'name'.
+		
+		>> MSET name1 jeman name2 'jeman n' rating 10 --> MSET [multiple set]
+		>> MGET name1 name1 rating --> [Multiple GET]
+		
+		>> GETRANGE name 0 3 --> if 'jeman', output will be 'jema' --> 0,1,2,3 characters in the string 'jeman'
+		>> GETRANGE name -3 -1 --> if 'jeman', output will be 'man' --> -3 -2 -1 characters in the string 'jeman'
+		
+		>> SETRANGE name 2 abc --> if 'jeman', output will be 'jeabc' --> from char 2 it will insert 'abc' by removing everything.
+		
+		>> INCR rating --> rating which is now '10' will be increased to '11'
+		>> DECR rating --> it wil go back to 10
+		>> INCRBY rating 5 --> it will increase to 15
+		>> DECRBY rating 5 --> it will be back to 10
+		

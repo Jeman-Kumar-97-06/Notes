@@ -166,6 +166,19 @@ Modern Cloud Computing :--
 			* This file includes 'User Name'[of the IAM user], 'Access Key ID'[a unique identifier for the user's access keys] and 'Secret Access Keys'[the 
 			secret part of the access keys user to securely sign API requests]
 			* Now a user is successfully created.
+			* To login as this user, when you react the login screen select 'IAM user' option to login as an IAM user. Use IAM user's name and password.
 		* If you go the IAM dashboard, You can see "AWS Account" with Account ID and Account Alias. This "Account Alias" is connected to AWS acccount as a whole. It's not 
 		connected to any individual user or group or root user.
+	* IAM Policy Structure :-- 
+		* Consists :-
+			* Version :-- policy language version, Most of the time includes "2012-10-17"
+			* ID	  :-- an identifier for the policy (optional)
+			* Statements :-- One or More Individual statements (required)
+				* Statements :-- 
+					* Sid : an identifer of the statement. it can be any string or number . [not mandatory].
+					* Effect : whether the statement allows or denies access (Allow,Deny). [only these 2 values].
+					* Principal : account/user/role/group to which the policy is applied to. If this value is absent, AWS thinks the policy is for every one.
+					* Action : list of actions this policy allows or denies.[What action can the users/group/account with this policy do]
+					* Resource : List of resources to which the actions apply to .[ex: if 'Resource':['arn:aws:s3:::mybucket/*"], then the policy applies to 's3 bucket']
+					* Condition : conditions when this policy will be in effect (optional).
 			

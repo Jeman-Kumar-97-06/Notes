@@ -165,4 +165,7 @@ Modern Cloud Computing :--
 			* There wil also be a 'Download .csv file' option.
 			* This file includes 'User Name'[of the IAM user], 'Access Key ID'[a unique identifier for the user's access keys] and 'Secret Access Keys'[the 
 			secret part of the access keys user to securely sign API requests]
+			* Now a user is successfully created.
+		* If you go the IAM dashboard, You can see "AWS Account" with Account ID and Account Alias. This "Account Alias" is connected to AWS acccount as a whole. It's not 
+		connected to any individual user or group or root user.
 			

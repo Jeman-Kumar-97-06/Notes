@@ -1,9 +1,9 @@
 TypeScript :--
     --> TypeScript is Javascript with added syntax for data types.
-    --> TypeScript is usually transpiled into Javascript.
+    --> TypeScript is usually transpiled into Javascript.[Converting source code of one language to another language].
     --> You can install the official TypeScript compiler :--
             $ npm install typescript --save-dev
-    --> To run the compiler use $ npx tsc [this command will display help page]
+    --> To run the compiler use $ npx tsc [this command will display help page when run in an empty project]
     --> The compiler can be configured using tsconfig.json file
     --> To generate that file, run $ npx tsc --init
     --> There are 3 main primitive types of data in Typescript and Javascript:--
@@ -13,7 +13,7 @@ TypeScript :--
     --> There are alse 3 not so common primitive data types :--
             --> Bigint  :-- Just like number data type as above, but allows larger -ve and +ve nums
             --> Symbol  :-- Are used to create globally unique identifier.
-    --> Type Assignment :-- 
+    --> Type Assignment in TypeScript:-- 
             --> Explicit :-- Writing out the type :--
                     ex :-- let name : string = 'Jeman';
 
@@ -26,6 +26,18 @@ TypeScript :--
             --> Ex2 :--
                     let firstName = 'jeman';
                     firstName = 33; --> this will give error too.
+	    # To do so....
+	    	let x:any = 'jeman'; --> Since 'any' won't provide type safety, it should be avoided as much as possible
+	    	x = 33; --> no no error	    	
+                 
+    --> Javascript : Boolean, True, False
+        TypeScript : boolean, true, false
+        
+    --> Sometimes typescript can't infer(guess) what type the data is if it's declared implicitly:--
+    	    const json = JSON.parse("55"); --> this will be set to 'any' ['any' disables type checking]
+    	    console.log(typeof json); --> will print number.
+    	  
+        
 
 
             

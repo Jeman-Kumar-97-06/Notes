@@ -169,6 +169,7 @@ Modern Cloud Computing :--
 			* To login as this user, when you react the login screen select 'IAM user' option to login as an IAM user. Use IAM user's name and password.
 		* If you go the IAM dashboard, You can see "AWS Account" with Account ID and Account Alias. This "Account Alias" is connected to AWS acccount as a whole. It's not 
 		connected to any individual user or group or root user.
+		* Removing a user from a group will prevent the user from using the policies assigned to the group.
 	* IAM Policy Structure :-- 
 		* Consists :-
 			* Version :-- policy language version, Most of the time includes "2012-10-17"
@@ -181,4 +182,14 @@ Modern Cloud Computing :--
 					* Action : list of actions this policy allows or denies.[What action can the users/group/account with this policy do]
 					* Resource : List of resources to which the actions apply to .[ex: if 'Resource':['arn:aws:s3:::mybucket/*"], then the policy applies to 's3 bucket']
 					* Condition : conditions when this policy will be in effect (optional).
+		* You can remove, create your own, manage policies of you are a root user or has Admin Access.
+	* IAM Password Policy :--
+		* As a root user :-
+			* Set a strong password
+			* You can setup password policies like :--
+				* Set a minimum password length
+				* Require specific char types in password.
+				* Allow IAM users to change their own passwords if needed.
+				* Require iAM users to change passwords after specific time. (Password Expiry)
+				* Prevent using old passwords when changing .
 			

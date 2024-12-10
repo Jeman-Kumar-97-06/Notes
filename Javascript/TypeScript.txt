@@ -36,6 +36,7 @@ TypeScript :--
     --> Sometimes typescript can't infer(guess) what type the data is if it's declared implicitly:--
     	    const json = JSON.parse("55"); --> this will be set to 'any' ['any' disables type checking]
     	    console.log(typeof json); --> will print number.
+    	    
     	  
         
 

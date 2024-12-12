@@ -22,4 +22,7 @@ GraphQL :--
     				
     	* The GraphQL way :--
     		* How it works :--
+    			* Usually when making api calls in graphQL, we typically send it to a single endpoint like 'pokemon.com/api/pokemon'.
+    			* It typically won't have other endpoints like shown in the 'Traditional Way' example.
+    			* To query the data we send some special Graph QL syntax code.
     				

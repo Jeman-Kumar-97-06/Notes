@@ -192,4 +192,15 @@ Modern Cloud Computing :--
 				* Allow IAM users to change their own passwords if needed.
 				* Require iAM users to change passwords after specific time. (Password Expiry)
 				* Prevent using old passwords when changing .
+				* Or use MFA (Multi Factor Auth) --> means password + a code to secure device.
+		* You can manage all this shit in 'Account Settings' tab.
+	* Accessing AWS :-
+		* The above password policy and shit is explained from the perspective of AWS GUI management console.
+		* You can also access aws from AWS CLI [This is protected by access keys]
+		* You can also access aws from AWS SDK [This is an sdk used by devs to make their code access, read and manage aws resources from code itself using api calls]
+						       [This also uses Access Keys]
+		* Access Keys :--
+			* Generated from AWS Mangement console.
+			* Users have to manage their own keys.
+			* Don't share them.
 			

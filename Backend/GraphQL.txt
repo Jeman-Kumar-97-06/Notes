@@ -1,2 +1,25 @@
 GraphQL :--
-    
+	* GraphQL is a query language.
+	* An alternative to using REST APIs the traditional way.
+	* Traditional way:--
+		* Ex:-- 1 pokemon.com/api/pokemon ----> GET list of pokemons / Send POST/Patch/Delete req to screw with the pokemon data
+		        2 pokemon.com/api/pokemon/123 --> GET pokemon with id:123 for send POST/Patch/Delete pokemon data with id:123
+		* Dis-Advantages :--
+			* Over-fetching :--
+				* Getting more data than we need.
+    				* In the example above the code line "1" will get all pokemon data.
+    				* Each pokemon obj can have an id, name, power....
+    				* We many not need power or we many not need id, and yet due to the restrictions in the Tranditional Way of querying data using REST APIs we have to settle 
+    				with that over-fetched data.
+    				
+    			* Under-fetching :--
+    				* Getting less data than we need.
+    				* Lets say we make request to code line "2" in the above example.
+    				* Web get the pokemon data that matching with id : 123. This Data Obj may have id, name, powers.
+    				* This "powers" key may have a value as 'invisibility'.
+    				* This value 'invisibility' many point to completely differnt data-set that has the description and limitations of the power 'invisibility'.
+    				* To get this, we may need to make another request to 'pokemon.com/api/powers/456'.
+    				
+    	* The GraphQL way :--
+    		* How it works :--
+    				

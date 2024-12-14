@@ -25,7 +25,20 @@ GraphQL :--
     			* Usually when making api calls in graphQL, we typically send it to a single endpoint like 'pokemon.com/api/pokemon'.
     			* It typically won't have other endpoints like shown in the 'Traditional Way' example.
     			* To query the data we send some special Graph QL syntax code.
+    			
     	* Apollo Server :--
     		* It's a popular open-source framework used to build GraphQL APIs. It simplifies the process of defining a GraphQL schema and implementing resolvers to handle queries and 
     		mutations. Built on top of NodeJS, it integrates seamlessly with JS and TS projects and can work with various backends and data sources.
+    		
+    	* Setting up Apollo Server, Graph QL and initializing a project:--
+    		* Create a Folder with the name of the project, cd into it, then,
+    			$ npm init -y && npm pkg set type='module'
+    			$ npm install @apollo/server graphql
+    			$ touch index.js
+    		* If you want, set the "scripts" value as follows inside 'package.json':
+    			>> "scripts":{
+    			>>	"start":"node index.js"
+    			>>		}
+    		
+    		
     				

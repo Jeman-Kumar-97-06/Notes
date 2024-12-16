@@ -39,6 +39,58 @@ GraphQL :--
     			>> "scripts":{
     			>>	"start":"node index.js"
     			>>		}
+    	
+    	* A Typical Query :---
+    		* Ex1:--
+    			>> query ReviewsQuery{
+    			>>	reviews {
+    			>>		rating
+    			>>		}
+    			>>		     } --> Will get all the reviews with only 'ratings' field in each review.
+    			
+    			>> query ReviewsQuery{
+    			>>	reviews {
+    			>>		rating,
+    			>>		content,
+    			>>		id
+    			>>		}
+    			>>		     } --> will get all the reviews with 'rating','content' and 'id' field from each review.
     		
-    		
-    				
+    		* Ex2:-- * Lets say in typical REST api "/api/games" endpoint will get us 'games' data, "/api/reviews" endopoint will get us 'reviews' data, and "api/authors" endpoint will get
+    		use "authors" data. Lets also say all thes 'games', 'reviews' and 'authors' data are connected to each other. The "connected to each other" part sould be done by us.
+    			 * GraphQL lets us traverse through all these data with its query syntax:--
+    			 * Lets say the query is about getting 'reviews' but each 'review' has a 'author' field that connects to 'authors' data.
+    			 >> query Query {
+    			 >>	reviews {
+    			 >>		rating,
+    			 >>		author {
+    			 >>			name
+    			 >>			}
+    			 >>		}
+    			 * Another example where we get 'game' data with 'id' as QUERY VARIABLE:
+    			 >> query Query {
+    			 >>	game(id:"2"){
+    			 >>		   title,
+    			 >>		   review {
+    			 >>			rating
+    			 >>			  }
+    			 >>		    }
+    			 >>		}
+    			 * Another Example :
+    			 >> query ReviewsQuery {
+    			 >>		reviews {
+    			 >>			ratings,
+    			 >>			content,
+    			 >>>			id,
+    			 >>			author {
+    			 >>				name,
+    			 >>				id,
+    			 >>				verified
+    			 >>				},
+    			 >>			game {
+    			 >>			        title,
+    			 >>				price,
+    			 >>				platforms,
+    			 >>			      }
+    			 >>			}
+    			 >>		       }

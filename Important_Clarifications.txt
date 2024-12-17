@@ -103,3 +103,37 @@ Javascript :--
 		callback functions. A Promise has three states, which are Pending, Fulfilled and Rejected.Creating a Promise is
 		possible using the Promise constructor, which requires the executor function. The executor function receives two 
 		arguments, namely, resolve and reject. You can call resolve when the operation succeeds and reject when the operation fails.
+		
+		
+	Out-Of-Bound Index Assignment :--
+		* Ex :-- 
+		>> const x = [1,2,3,4]
+		>> x[100]  = 'jeman'
+		>> console.log(x) ----> [1,2,3,4,<96 empty items>,'jeman'] 
+		
+		* Arrays in JS are dynamic and sparse 
+		* >> console.log(x[96]) --> will give 'undefined'
+		* >> console.log(x.length) --> will give 101
+	
+	Functions as Objects :--
+		* JS Functions are Objects.
+		* This means you can attach props to them like any other object.
+		* Ex :-- function abc() {
+			 	console.log(abc.xyz);
+			 		}
+			 abc();---> output :-- 'undefined'
+			 abc.xyz = 'jeman';
+			 abc(); --> output :-- 'jeman'
+		* Also JS Functions can :--
+			* Be assigned to variables and properties.
+				* Ex:--
+				>> function greet() {
+				>>	console.log('hello');
+				>> 	}
+				>> greet.language = 'English';
+				>> console.log(greet.language); --> 'English'
+				* Ex2:--
+				>> 
+			* Be passed as args to other functions.
+			* Be returned from other functions.
+			* Have props and methods attached to them.

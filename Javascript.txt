@@ -479,7 +479,7 @@
             >>                                                                      })
 
 
-        * Async & Await :-- The most efficient way to do all the above shit.\
+        * Async & Await :-- The most efficient way to do all the above shit.
             * An Async Function always returns a promise.
             >> const getTodos = async () => {
             >>          const resp = await fetch('x1.json');

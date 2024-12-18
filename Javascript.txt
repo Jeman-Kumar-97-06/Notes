@@ -466,7 +466,7 @@
        * Fetch API :--
             * A Fetch function returns a promise.
             * Unlike other promises, this 'fetch' function doesn't reject when url/resource path is wrong. It only rejects when there's a network issue.  
-            * The Response Text unlike the previous responsed in'st inside the 'body' value. It's inside the 'json' key nested inside '__proto__' key's value.
+            * The Response Text unlike the previous response isn't inside the 'body' value. It's inside the 'json' key nested inside '__proto__' key's value.
               You can access it with 'response.json()'.
         
             >> fetch('resource.json/some_url_yo').then(resp=>{

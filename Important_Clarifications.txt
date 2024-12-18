@@ -1,5 +1,35 @@
+Phases of event propagation.
+
+#######################################################################################################################################################
+
 Javascript :--
-	Destructuring Objects/Strings/Arrays :-- An assignment syntax used to unpack object properties into variables.
+	
+	* The 'parseInt' function :--
+		* Ex :-- >> console.log(parseInt(10)) ------> Output :--10
+			 >> console.log(parseInt("10+2")) --> Output :--10
+			 >> console.log(parseInt("7am")) ---> Output :--7
+			 >> console.log(parseInt("a")) -----> Output :--NaN --> Not a Number
+		* This function stops parsing as soon as it comes across something that it can't parse as Int.
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	* TypeOf:--
+		Ex :-- 
+			console.log(typeof 'jeman'); --> string
+			console.log(typeof 2);---------> number
+			
+			let x = {'name':"jeman"}
+			console.log(typeof x);---------> object
+			console.log(typeof [1,2,3]);---> object (it doens't say array)
+			
+		* JS "typeof" operator only distinguishes between string,number,boolean and function
+		* Array and Objects are treated as objects only.
+		* Bcoz arrays are internally treated as 'objects' in js.
+		* If you specifically want to check the type:--
+			* >> console.log(Array.isArray(x));---> gives true or false.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+	
+	* Destructuring Objects/Strings/Arrays :-- An assignment syntax used to unpack object properties into variables.
 		Ex1 :-- 
 			const person = { firstName : "John", lastName : "Doe", age : 50 };
 			let {firstName, lastName} = person;
@@ -41,14 +71,19 @@ Javascript :--
 			const numbers = [10,20,30,40,50];
 			const [a,b,...rest] = numbers; --> Using Spread Operator
 			console.log(rest) --> [30,40,50];
-	Using Spread Operator:--
+			
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+		
+	* Using Spread Operator:--
 		Ex :-- 
 			const myV1 = {brand : 'Ford',model : 'Mustange',color : 'red'};
 			const myV2 = {type : 'car',year : 2011, color : 'yellow' };
 			const myV1V2 = {...myV1, ...myV2};
 			console.log(myV1V2) --> {brand: 'Ford',model: 'Mustang',color: 'yellow',type: 'car',year: 2021} --> This is a Deep copy.
 
-	Difference between Shallow Copy and Deep Copy :--
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	* Difference between Shallow Copy and Deep Copy :--
 		* Shallow Copy :--
 			* A shallow copy of an object is a copy whose properties share the same references as those of the source object from which the copy 
 			was made.
@@ -93,10 +128,14 @@ Javascript :--
 				>> let b   = a.map(el=>el);
 				>> let c   = a.slice(0);
 
-	Difference between Javascript methods and Functions :--
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	* Difference between Javascript methods and Functions :--
 	
 	
-	What are Javascript Promises:--
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+	
+	* What are Javascript Promises:--
 		A Promise in JavaScript is an object representing the eventual completion or failure of an asynchronous operation.
 		It enables you to register callbacks for notifications when the operation completes or fails and to handle errors 
 		or results. Promises provide a way to write asynchronous code that is more readable and manageable than using 
@@ -104,8 +143,9 @@ Javascript :--
 		possible using the Promise constructor, which requires the executor function. The executor function receives two 
 		arguments, namely, resolve and reject. You can call resolve when the operation succeeds and reject when the operation fails.
 		
+----------------------------------------------------------------------------------------------------------------------------------------------------------
 		
-	Out-Of-Bound Index Assignment :--
+	* Out-Of-Bound Index Assignment :--
 		* Ex :-- 
 		>> const x = [1,2,3,4]
 		>> x[100]  = 'jeman'
@@ -115,7 +155,9 @@ Javascript :--
 		* >> console.log(x[96]) --> will give 'undefined'
 		* >> console.log(x.length) --> will give 101
 	
-	Functions as Objects :--
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+	
+	* Functions as Objects :--
 		* JS Functions are Objects.
 		* This means you can attach props to them like any other object.
 		* Ex :-- function abc() {
@@ -137,3 +179,6 @@ Javascript :--
 			* Be passed as args to other functions.
 			* Be returned from other functions.
 			* Have props and methods attached to them.
+			
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+			

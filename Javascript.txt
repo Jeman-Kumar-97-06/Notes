@@ -4,13 +4,15 @@
         --> Multi  Line Comments :--
                 >> /* this is a multi
                 >> line comment */
-
+-----------------------------------------------------------------------------------------------------------------------------------------------
 --> Variables :-- 
         --> Declared with 'let' is NOT RE-DECLARABLE and MUTABLE
         --> Declared with 'var' is RE-DECLARABLE and MUTABLE
         --> Declared with 'const' is NOT RE-DECLARABLE and IMMUTABLE
 
         --> 'let' and 'const' has block scope.
+
+------------------------------------------------------------------------------------------------------------------------------------------------
 
 --> String :--
         >> let str = 'Jeman';
@@ -20,24 +22,58 @@
 
         --> What will work :--
                >> str = 'Leman' ;  --> This will work
+	* Split method: --
+		* Returns a new array.
+		* Takes 2 args at most (seperator,limit)
+		* Ex :-- >> const str   = 'The quick brown fox jumps over the lazy dog';
+		       >> const words = str.split(' ');---> Split at every space inbetween the string. 
+							    Output :- ["The",'quick','brown','fox','jumps','over','the','lazy','dog']
+		       >> const words2= str.split(' ',2); -> Gives :- ["The","quick"]
+
+------------------------------------------------------------------------------------------------------------------------------------------------
 
 --> Arrays :--
         >> let arr = [1,2,3,4,5];
 
         --> Array METHODS :--
+        * Push :--
                 >> arr.push(6);
                 >> console.log(arr); --> This will give [1,2,3,4,5,6];
-
+	* Pop :--
                 >> arr.pop();
                 >> console.log(arr); --> This will give [1,2,3,4,5];
-
+	* Unshift :--
                 >> arr.unshift(0);
                 >> console.log(arr); --> This will give [0,1,2,3,4,5];
-
+	* Shift :--
                 >> arr.shift();
                 >> console.log(arr); --> This will give [1,2,3,4,5];
+	* Sort :--
+		* This method sorts the array and returns the same array with re-arranged references.
+		* 
+        
+        * Slice :--
+        	* Slice is an array method that returns a shallow copy of a portion of an array into a new array object selected from 'start' to 'end'('end' not included).
+        	* Ex :--
+        		>> const animals = ['ant','bison','camel','duck','elephant'];
+        				      0      1       2       3        4
+        				      -5    -4      -3      -2       -1
+        		>> console.log(animals.slice(2)); ----> returns ['camel','duck']
+        		>> console.log(animals.slice(2,4)); --> returns ['camel','duck']
+        		>> console.log(animals.slice(1,5)); --> returns ['bison', 'camel', 'duck', 'elephant']
+        		>> console.log(animals.slice(-2)); ---> returns ['duck', 'elephant']
+        		>> console.log(animals.slice(2,-1)); -> returns ['camel','duck']
+        		>> console.log(animals.slice()); -----> returns ['ant','bison','camel','duck','elephant']
+        * Splice :-- 
+        	* Splice is a array method that takes more that 3 arguments. (startIndex,deleteCount,item1toreplace,item2toreplace....).
+        	* This method changes the contents of the array by removing or replacing the existing elements and/or adding new elements in place.
+        	* It doesn't return anything.
+        	* Ex:-- 
+        		>> const months = ['jan','mar','april','may','june'];
+        		>> months.splice(1,0,'feb');
+        		>> console.log(months); -------------> returns ["jan","feb",'mar','april','may','june']
 
-        * Refer splice, slice, split
+------------------------------------------------------------------------------------------------------------------------------------------------
 
 --> Scope :--
         --> Block Scope :--
@@ -50,6 +86,7 @@
         --> Global Scope :--
                 --> Can be accessed all over the code.
 
+------------------------------------------------------------------------------------------------------------------------------------------------
 
 --> Functions :--
         --> Example1 :--
@@ -75,9 +112,11 @@
         >>                    };
         >>  fun(1,3) --> Outputs 4
 
-        
+------------------------------------------------------------------------------------------------------------------------------------------------
+
 --> Lexical Scope :--
-        
+       
+------------------------------------------------------------------------------------------------------------------------------------------------
 
 --> If & If-Else Conditions :--
         >> if (x>5)
@@ -88,11 +127,15 @@
         >>  {
         >>      console.log('x is not greater than 5!');
         >>  }
+        
+------------------------------------------------------------------------------------------------------------------------------------------------
 
 --> For Loop :--
         >> for (let i = 0; i<5; i++) {
         >>      console.log(x);
         >>                           };
+
+------------------------------------------------------------------------------------------------------------------------------------------------
 
 --> For In Loop :-- Treats every iterable as object and returns keys:
         >> let x = ['jeman','jeevan'];
@@ -100,12 +143,16 @@
         >>      console.log(i);
         >> }
          * output :-- 0 1
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
 --> For Of Loop :-- Treats every iterable as object and returns values:
         >> for (var i of x){
         >>      console.log(i);
         >> };
          * output :-- 'jeman' 'jeevan'
 
+------------------------------------------------------------------------------------------------------------------------------------------------
 
 --> While Loop :--
         >> let x = 5;
@@ -114,9 +161,12 @@
         >>      i ++ ;
         >>              };
 
+------------------------------------------------------------------------------------------------------------------------------------------------
+
 --> Do-While Loop :--
 
         
+------------------------------------------------------------------------------------------------------------------------------------------------
 
 --> Switch Case :-- In the following code, you should definitely use 'break'.
         >> switch (a) {
@@ -138,6 +188,8 @@
         >>          console.log(a is something else);
         >>          break;
         >>            };
+
+------------------------------------------------------------------------------------------------------------------------------------------------
 
 --> Objects :--
         >> const cat = {
@@ -163,6 +215,8 @@
 
         --> Deleting a property for JS Object :--
         >> delete car.ears;
+
+------------------------------------------------------------------------------------------------------------------------------------------------
 
 --> Object Oriented Programming :--
         --> Class : -- A Blueprint to create similiar objects. Its a template definition of the methods and variables in a particular kind of object.
@@ -260,8 +314,7 @@
         4. Polymorphism :--
         
 
-
-
+------------------------------------------------------------------------------------------------------------------------------------------------
 
 --> AsyncJS :--
         
@@ -438,7 +491,7 @@
             >>                       }).catch(err=>{console.log(err)}).
     
         
-
+------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 

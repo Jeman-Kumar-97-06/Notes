@@ -356,8 +356,8 @@
         * Async JS without Callback FUnction :--
             >> const XMLHttpRequest = require('xhr2');
             >> const getTodos = () => {
-            >>      const req = new XMLHttpRequest();
-            >>      req.addEventListener('readystatechange',()=>{
+            >>      const req = new XMLHttpRequest(); ---------------> here 'req' is an instance of XMLHttpRequest, which is async by default. If you want it to be synchronous, add 'false' 
+            >>      req.addEventListener('readystatechange',()=>{      as 3rd argument to 'req.open()' in "Linex"
             >>          if(req.readyState===4 && req.status === 200)
             >>          {
             >>              console.log(req.responseText);
@@ -367,7 +367,7 @@
             >>          }
             >>                                                 }
             >>                          )
-            >>      req.open('GET','https://jsonplaceholder.typicode.com/todos/1');
+      Linex >>      req.open('GET','https://jsonplaceholder.typicode.com/todos/1');
             >>      req.send();
             >>                          }
             >> console.log(1);

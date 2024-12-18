@@ -1,96 +1,75 @@
-GraphQL :--
-	* GraphQL is a query language.
-	* An alternative to using REST APIs the traditional way.
-	* Traditional way:--
-		* Ex:-- 1 pokemon.com/api/pokemon ----> GET list of pokemons / Send POST/Patch/Delete req to screw with the pokemon data
-		        2 pokemon.com/api/pokemon/123 --> GET pokemon with id:123 for send POST/Patch/Delete pokemon data with id:123
-		* Dis-Advantages :--
-			* Over-fetching :--
-				* Getting more data than we need.
-    				* In the example above the code line "1" will get all pokemon data.
-    				* Each pokemon obj can have an id, name, power....
-    				* We many not need power or we many not need id, and yet due to the restrictions in the Tranditional Way of querying data using REST APIs we have to settle 
-    				with that over-fetched data.
-    				
-    			* Under-fetching :--
-    				* Getting less data than we need.
-    				* Lets say we make request to code line "2" in the above example.
-    				* Web get the pokemon data that matching with id : 123. This Data Obj may have id, name, powers.
-    				* This "powers" key may have a value as 'invisibility'.
-    				* This value 'invisibility' many point to completely differnt data-set that has the description and limitations of the power 'invisibility'.
-    				* To get this, we may need to make another request to 'pokemon.com/api/powers/456'.
-    				
-    	* The GraphQL way :--
-    		* How it works :--
-    			* Usually when making api calls in graphQL, we typically send it to a single endpoint like 'pokemon.com/api/pokemon'.
-    			* It typically won't have other endpoints like shown in the 'Traditional Way' example.
-    			* To query the data we send some special Graph QL syntax code.
-    			
-    	* Apollo Server :--
-    		* It's a popular open-source framework used to build GraphQL APIs. It simplifies the process of defining a GraphQL schema and implementing resolvers to handle queries and 
-    		mutations. Built on top of NodeJS, it integrates seamlessly with JS and TS projects and can work with various backends and data sources.
-    		
-    	* Setting up Apollo Server, Graph QL and initializing a project:--
-    		* Create a Folder with the name of the project, cd into it, then,
-    			$ npm init -y && npm pkg set type='module'
-    			$ npm install @apollo/server graphql
-    			$ touch index.js
-    		* If you want, set the "scripts" value as follows inside 'package.json':
-    			>> "scripts":{
-    			>>	"start":"node index.js"
-    			>>		}
-    	
-    	* A Typical Query :---
-    		* Ex1:--
-    			>> query ReviewsQuery{
-    			>>	reviews {
-    			>>		rating
-    			>>		}
-    			>>		     } --> Will get all the reviews with only 'ratings' field in each review.
-    			
-    			>> query ReviewsQuery{
-    			>>	reviews {
-    			>>		rating,
-    			>>		content,
-    			>>		id
-    			>>		}
-    			>>		     } --> will get all the reviews with 'rating','content' and 'id' field from each review.
-    		
-    		* Ex2:-- * Lets say in typical REST api "/api/games" endpoint will get us 'games' data, "/api/reviews" endopoint will get us 'reviews' data, and "api/authors" endpoint will get
-    		use "authors" data. Lets also say all thes 'games', 'reviews' and 'authors' data are connected to each other. The "connected to each other" part sould be done by us.
-    			 * GraphQL lets us traverse through all these data with its query syntax:--
-    			 * Lets say the query is about getting 'reviews' but each 'review' has a 'author' field that connects to 'authors' data.
-    			 >> query Query {
-    			 >>	reviews {
-    			 >>		rating,
-    			 >>		author {
-    			 >>			name
-    			 >>			}
-    			 >>		}
-    			 * Another example where we get 'game' data with 'id' as QUERY VARIABLE:
-    			 >> query Query {
-    			 >>	game(id:"2"){
-    			 >>		   title,
-    			 >>		   review {
-    			 >>			rating
-    			 >>			  }
-    			 >>		    }
-    			 >>		}
-    			 * Another Example :
-    			 >> query ReviewsQuery {
-    			 >>		reviews {
-    			 >>			ratings,
-    			 >>			content,
-    			 >>>			id,
-    			 >>			author {
-    			 >>				name,
-    			 >>				id,
-    			 >>				verified
-    			 >>				},
-    			 >>			game {
-    			 >>			        title,
-    			 >>				price,
-    			 >>				platforms,
-    			 >>			      }
-    			 >>			}
-    			 >>		       }
+Graph QL :--
+	* GraphQL is an open-source data query and manipulation lang for APIs and a runtime for fulfilling queries with existing data.
+	* It's an alternative to REST Apis, with added benifits such as the ability to request exact data that you want without over / under fetching .
+
+How REST Api works :--
+	        get/post/put/delete	  	Req
+	Client ---------------------> REST Api ----------> Server
+	       <--------------------  /api/proj <-------
+		Res Data	      /api/p/id    Res
+		 		      /api/c/id
+		 		      etc.......
+		 		      Many such
+		 		      endpoints!
+		 		      
+How Graph QL works :--
+		Apollo Client:
+		proj(id:'2'){name,client{
+				    name			
+				    	}}			Request
+	     ------------------------------->		 --------------------->
+       Client 				       Graph QL 			 Server
+             <------------------------------		 <---------------------
+             		Res Data		one		Response
+             				      endpoint
+             				      
+Graph Queries :--
+	* Typical Query : "Get me all the games. But each game should only have title, id and review. Even in that review, i only need rating and pub_date.
+		>> query Query1{
+		>>	games{
+		>>		title,
+		>>		id,
+		>>		reviews : {
+		>>			rating,
+		>>			pub_date
+		>>			 }
+		>>	}
+		>>		}
+	* Typical Query2 : "Get me a client with id as 100. get his/her name and age.
+		>> query Query2{
+		>>	client (id:'100'){
+		>>		name,
+		>>		age
+		>>		}
+		>>	};
+
+GraphQL mutations :-- Used to do CRUD ops on data.
+	* Typical Mutation :-- add a project with name, descript, status, and ClientID. If successful return it with only name and descript fields.
+		>> mutation MutationName {
+		>>	addProject (
+		>>		name : 'Mobile APp',
+		>>		descript : 'nice app',
+		>>		status : 'not started',
+		>>		clientID: '1'){
+		>>			name,
+		>>			descript
+		>>				}
+		>>			}
+		
+* For Rest apis we use Postman, for graph ql we use 'GraphiQL' or "Apollo Server".
+
+* GraphQL Schemas & Types :--
+	* The GraphQL type system describes what data can be queried from the API. 
+	The collection of those capabilities is referred to as the service’s schema 
+	and clients can use that schema to send queries to the API that return predictable results.
+	* While schemas specifies all the fields, types tell the data type of those fields.
+	* Most basic GraphQL type is Object Type.
+		Ex :-- type Project { --------------> "Project" is a Object type
+				name : String!,  ---> "name" is a String Type
+				descript : String!
+				}
+	* ID,String,Int,Float come under Scalar Type.
+
+* Doing a project :-- 
+	* Npm install express, express-graphql, graphql, mongoose, cors, colors.
+	* Also install nodemon, dotenv 

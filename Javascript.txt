@@ -37,23 +37,22 @@
 
         --> Array METHODS :--
         * Push :--
-                >> arr.push(6);
+                >> arr.push(6); -------------------------------------> console.log(arr.push(6)) will give the length of the array after pushing '6'
                 >> console.log(arr); --> This will give [1,2,3,4,5,6];
 	* Pop :--
-                >> arr.pop();
+                >> arr.pop(); ---------------------------------------> console.log(arr.pop()) will give the element that was popped from the array.
                 >> console.log(arr); --> This will give [1,2,3,4,5];
 	* Unshift :--
-                >> arr.unshift(0);
+                >> arr.unshift(0); ----------------------------------> console.log(arr.unshift()) will give the length of the array after adding '0' to the start
                 >> console.log(arr); --> This will give [0,1,2,3,4,5];
 	* Shift :--
-                >> arr.shift();
+                >> arr.shift(); -------------------------------------> console.log(arr.pop()) will give the element that was removed from the beginning.
                 >> console.log(arr); --> This will give [1,2,3,4,5];
 	* Sort :--
 		* This method sorts the array and returns the same array with re-arranged references.
-		* 
         
         * Slice :--
-        	* Slice is an array method that returns a shallow copy of a portion of an array into a new array object selected from 'start' to 'end'('end' not included).
+        	* Slice(start,end) is an array method that returns a shallow copy of a portion of an array into a new array object selected from 'start' to 'end'('end' not included).
         	* Ex :--
         		>> const animals = ['ant','bison','camel','duck','elephant'];
         				      0      1       2       3        4
@@ -72,6 +71,11 @@
         		>> const months = ['jan','mar','april','may','june'];
         		>> months.splice(1,0,'feb');
         		>> console.log(months); -------------> returns ["jan","feb",'mar','april','may','june']
+
+	* FIlter :--
+		* const results = arrayJeman.filter(i=>(i>5)) -----> Prints all the elements in the array that is greater that '5'
+	* Find   :--
+		* const results = arrayJeman.find(i=>(i>5)) -------> Prints the first element in the array that's greater than '5'.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -137,7 +141,7 @@
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
 
---> For In Loop :-- Treats every iterable as object and returns keys:
+--> For In Loop :-- Treats every iterable as object and returns keys [indexes]:
         >> let x = ['jeman','jeevan'];
         >> for (var i in x){
         >>      console.log(i);
@@ -164,7 +168,6 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------
 
 --> Do-While Loop :--
-
         
 ------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -340,7 +343,8 @@
               |                                                                                                             |
               v                                                                                                             |
            In the End the callback will run <-------------------------------------------------------------------------------v
-
+	* Actually Speaking Async JS doesn't use multiple threads. Instead they are offloaded to background threads or systems managed by runtime (browser Or Node Js).
+	These threads are not part of the JavaScript engine but are provided by the environment
 
 
         * Example :--

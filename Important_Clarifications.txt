@@ -1,8 +1,68 @@
-Phases of event propagation.
+Still pending :--
+	Phases of event propagation.
+	Uses of 'use strict'.
+	Effect of 'use strict' on hoisting.
+	Javascript Event Loop.
 
 #######################################################################################################################################################
 
 Javascript :--
+
+	* Declaring :-- var x;
+			 let y;
+			 const z;
+	* Initializing with value :--
+			 var x = 'jeman';
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	* Function Declaration vs Expression :--
+		* Declaration is when function is declared with 'function' keyword.
+		* Ex :-- 
+			function func(x){
+				console.log(x)
+				return;
+				}
+			func();
+		* Expression is when function is declared and assigned to a variable.
+		* Ex :--
+			const func = (x) => {
+				console.log(x);
+				return;
+				}
+			const func = function(x){
+				console.log(x);
+				return;
+				}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	* JS Hoisting :--
+		* Hoisting is a process where JS moves Declarations to the top of their scope before the code is executed.
+		* This doesn't mean the code is physically moved. JS behaves as if it did.
+		* Only declarations are hoisted. Values or Assignments are not.
+		* Different Treatment for 'var','let','const' and functions.
+		* declaration of variables with 'var' is always hoisted. But the when using the value before initialization, it will be 'undefined'.
+		* let/const: Declarations are hoisted but are not initialized. Accessing them before declaration results in 'Reference Error'.
+		* Function declarations : Both declaration and function body are hoisted. This means you can happily run a function before the definition.
+		* Function Expressions  : The variable declarations is hoisted, the function itself cant' be used before the runtime.
+		* Ex :-- 
+			>> console.log(x);
+			>> let x = 100;
+			* The above code doesn't give error but prints 'undefined'
+		* 
+		Type	                | Hoisted?		| Initialized?		| Usable Before Declaration?
+		--------------------------------------------------------------------------------------------------------
+		var	  		| Yes			| Yes, as undefined	| Yes (but value is undefined)
+		--------------------------------------------------------------------------------------------------------
+		let	  		| Yes			| No (TDZ applies)	| No
+		--------------------------------------------------------------------------------------------------------
+		const	  		| Yes			| No (TDZ applies)	| No
+		--------------------------------------------------------------------------------------------------------
+		Function  Declaration	| Yes (with body)	| Yes			| Yes
+		--------------------------------------------------------------------------------------------------------
+		Function  Expression	| Yes (variable only)	| No			| No
+----------------------------------------------------------------------------------------------------------------------------------------------------------
 	
 	* The 'parseInt' function :--
 		* Ex :-- >> console.log(parseInt(10)) ------> Output :--10
@@ -10,6 +70,21 @@ Javascript :--
 			 >> console.log(parseInt("7am")) ---> Output :--7
 			 >> console.log(parseInt("a")) -----> Output :--NaN --> Not a Number
 		* This function stops parsing as soon as it comes across something that it can't parse as Int.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	* JS 'at' vs 'charAt' :-- both of them take a index and gives the char at that index
+		* 'at' :--
+			* introduced in ES2022.
+			* Can access chars with both +ve -ve indexes.
+			* Returns 'undefined' if the index is out of range.
+			* Works with Strings and Arrays.
+		* 'charAt' :--
+			* A legacy method available since js was created.
+			* Only accepts +ve indexes.
+			* Returns empty string if index is out of range.
+			* Works only with Strings.
+		
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 	* TypeOf:--

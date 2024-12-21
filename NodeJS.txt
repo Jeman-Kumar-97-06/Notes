@@ -50,7 +50,7 @@
 
 * Creating a server and Listening to Requests and Sending Responses the OLD SCHOOL way :--
      >> const http = require('http');
-     >> const serv = http.createServer((req,res)=>{
+     >> const serv = http.createServer((req,res)=>{ ---------------------------------------> This is a callback function that takes (req,res) args and is passed to 'http.createServer' method
      >>                     console.log('request made');
      >>                                            }
      >> serv.listen(3000,'localhost',()=>{console.log('Listening at 3000')});
@@ -174,7 +174,7 @@
      >>
 
 * Creating a server and listening to requests and sending Responses in another NEW way :--
-     * Using EJS [Embedded JS]
+     * Using EJS [Embedded JS] ---------> This is a TEMPLATING ENGINE
      >> const exp = require('express');
      >> const app = exp();  
      >> app.set('view engine' ,'ejs'); --------------------> Setting view engine as 'EJS'. Now you can send '.ejs' files instead of 'html' files.

@@ -1,4 +1,3 @@
-
 Process :-- Let's consider an app named 'Workout Tracker':
    
    * Create a 'backend' folder and initialize npm.

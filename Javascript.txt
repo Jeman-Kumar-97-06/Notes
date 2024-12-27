@@ -77,6 +77,8 @@
 	    * Find   :--
 		   * const results = arrayJeman.find(i=>(i>5)) -------> Returns the first element in the array that's greater than '5'.
 
+        * Reduce :--
+            * The 'reduce()' method of Array instances executes a user supplied 'reducer' callback function.
 ------------------------------------------------------------------------------------------------------------------------------------------------
 
 --> Scope :--

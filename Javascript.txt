@@ -73,9 +73,9 @@
         		>> console.log(months); -------------> returns ["jan","feb",'mar','april','may','june']
 
 	    * FIlter :--
-		   * const results = arrayJeman.filter(i=>(i>5)) -----> Prints all the elements in the array that is greater that '5'
+		   * const results = arrayJeman.filter(i=>(i>5)) -----> Returns all the elements in the array that is greater that '5'
 	    * Find   :--
-		   * const results = arrayJeman.find(i=>(i>5)) -------> Prints the first element in the array that's greater than '5'.
+		   * const results = arrayJeman.find(i=>(i>5)) -------> Returns the first element in the array that's greater than '5'.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -162,7 +162,7 @@
         >> let x = 5;
         >> while (x<10) {
         >>      console.log(x);
-        >>      i ++ ;
+        >>      x ++ ;
         >>              };
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
@@ -218,6 +218,12 @@
 
         --> Deleting a property for JS Object :--
         >> delete car.ears;
+
+        --> Print all keys :--
+        >> console.log(Object.keys(cat));
+
+        --> Pritn all Values :--
+        >> console.log(Object.values(cat));
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
 

@@ -17,18 +17,18 @@
 --> String :--
         >> let str = 'Jeman';
         
-        --> What won't work :--
+        --> What won't work :-- In JS strings are immutable.
                >> str[0] = 'L';  --> This won't change 'Jeman' to 'Leman'
 
-        --> What will work :--
+        --> What will work :-- 
                >> str = 'Leman' ;  --> This will work
 	* Split method: --
 		* Returns a new array.
 		* Takes 2 args at most (seperator,limit)
 		* Ex :-- >> const str   = 'The quick brown fox jumps over the lazy dog';
-		       >> const words = str.split(' ');---> Split at every space inbetween the string. 
-							    Output :- ["The",'quick','brown','fox','jumps','over','the','lazy','dog']
-		       >> const words2= str.split(' ',2); -> Gives :- ["The","quick"]
+		         >> const words = str.split(' ');---> Split at every space inbetween the string. 
+							      Output :- ["The",'quick','brown','fox','jumps','over','the','lazy','dog']
+		         >> const words2= str.split(' ',2); -> Gives :- ["The","quick"]
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
 

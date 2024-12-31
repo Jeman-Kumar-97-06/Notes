@@ -1,6 +1,6 @@
 React JS :--
     * A Frontend Open Source Framework which is used to develop user interfaces specifically for applications with single page.
-    * Different content is rendered on that single page page dynamically according to User/Clients Requests.
+    * Different content is rendered on that single page dynamically according to User/Clients Requests.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------
 

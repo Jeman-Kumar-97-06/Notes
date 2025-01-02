@@ -1,3 +1,7 @@
 JAVASCRIPT :--
+    What are Callbacks ?
+        In Javascript callbacks are just functions passed to other functions as arguments.
+        
     What is Callback Hell?
+        Callba
     Promise Constructor is generally used to wrap around what type of functions?

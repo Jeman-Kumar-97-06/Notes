@@ -163,10 +163,12 @@ Javascript :--
 			* A shallow copy of an object is a copy whose properties share the same references as those of the source object from which the copy 
 			was made.
 			* Here when you make changes to the copy the original object will also change.
+            * When you make changes to original, the copy will change too.
 		* Deep Copy :--	
 			* A deep copy of an object is a copy whose properties do not share the same references as those of the source object from which the
 			copy was made
 			* Here when you make changes to the copy the original object will NOT change.
+            * If you make changes to the original the copy will not change.
 			
 		# Primitive Data types like Number, String, Boolean, undefined, null will make a deep copy by default.
 			Ex :-- 

@@ -17,7 +17,7 @@ Virtualization vs Containerization:--
                         Ex :-- VMware ESXi
                            Citrix XenServer
                            Microsoft Hyperv
-                * VM uses the shares hardware resources to run the os and app upon it.
+                * VM uses the shared hardware resources to run the os and app upon it.
                 * Each VM has their own OS.
                 * Dis-Advantages :-- 
                     * Consume a lot of disk space.
